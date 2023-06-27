@@ -1,0 +1,5 @@
+@import '../../../styles/global.scss';
+
+.textarea {
+  @include form-controls;
+}

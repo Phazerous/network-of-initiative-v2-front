@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  width: min-content;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  align-items: center;
+  width: min-content;
+}

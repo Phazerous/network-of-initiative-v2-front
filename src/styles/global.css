@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-5: #f6f5f6;
+  --accent-70: #7f7d88;
+  --accent: #484554;
+  --primary: #6462dc;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  height: 100vh;
+}
+
+input,
+fieldset,
+button {
+  border: none;
+  outline: none;
+}
+
+h2 {
+  font-size: 27px;
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--accent);
+}
+
+.center-content {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}

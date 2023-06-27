@@ -1,0 +1,12 @@
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.label {
+  color: var(--accent-70);
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 8px;
+}
