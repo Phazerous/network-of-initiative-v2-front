@@ -51,3 +51,7 @@ input,
 textarea {
   font-family: inherit;
 }
+
+p {
+  font-size: 14px;
+}

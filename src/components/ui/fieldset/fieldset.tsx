@@ -6,18 +6,33 @@ import styles from './fieldset.module.scss';
 interface FieldsetProps {
   type: 'textarea' | 'input';
   label: string;
+  value: string;
+  setValue: (newValue: string) => void;
   width?: number;
-  inputType?: 'text';
+  inputType?: 'text' | 'password';
 }
 
 export default function Fieldset({
   type,
   label,
   width,
+  value,
+  setValue,
   inputType,
 }: FieldsetProps) {
   const formControls =
-    type === 'textarea' ? <Textarea /> : <Input type={inputType} />;
+    type === 'textarea' ? (
+      <Textarea
+        value={value}
+        setValue={setValue}
+      />
+    ) : (
+      <Input
+        type={inputType}
+        value={value}
+        setValue={setValue}
+      />
+    );
 
   return (
     <>
