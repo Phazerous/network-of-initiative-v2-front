@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { requestVerificationCode } from '../../../lib/requests/signup';
 
 interface RequestVerificationCodePageProps {
-  onContinue: () => void;
+  onContinue: (email: string) => void;
 }
 
 export default function RequestVerificationCodePage({
@@ -17,7 +17,7 @@ export default function RequestVerificationCodePage({
   const handleRequestVerificationCode = async () => {
     try {
       await requestVerificationCode(email);
-      onContinue();
+      onContinue(email);
     } catch (e) {
       if (e instanceof Error) {
         console.log(e.message);

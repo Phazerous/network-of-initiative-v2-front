@@ -15,6 +15,7 @@ export const post = async (path: string, data: object) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
+    credentials: 'include',
   });
 
   return handleResponse(response);
@@ -30,6 +31,8 @@ const handleResponse = async (response: Response) => {
     throw new Error(errorMessage);
   }
 
+  if (!json) return response;
+
   return json;
 };
 
@@ -41,6 +44,20 @@ const extractJSON = async (response: Response) => {
       const json = await response.json();
 
       return json;
+    }
+  }
+
+  return null;
+};
+
+export const extractText = async (response: Response) => {
+  if (response.headers.has('Content-Type')) {
+    const contentType = response.headers.get('Content-Type')!;
+
+    if (contentType.includes('text')) {
+      const text = await response.text();
+
+      return text;
     }
   }
 

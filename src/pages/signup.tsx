@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import CreateUser from '../components/pages/create-user/create-user';
 import RequestVerificationCodePage from '../components/pages/request-verification-code/request-verification-code';
-import VerifyEmail from '../components/pages/verify-email/verify-email';
 import { requestVerificationCode } from '../lib/requests/signup';
+import VerifyEmailPage from '../components/pages/verify-email/verify-email';
+import CreateUserPage from '../components/pages/create-user/create-user';
+import { useRouter } from 'next/router';
 
 enum REGISTRATION_STAGE {
   REQUEST_VERIFICATION_CODE,
@@ -11,6 +12,9 @@ enum REGISTRATION_STAGE {
 }
 
 export default function Signup() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+
   const [registrationStage, setRegistrationStage] =
     useState<REGISTRATION_STAGE>(REGISTRATION_STAGE.REQUEST_VERIFICATION_CODE);
 
@@ -19,15 +23,25 @@ export default function Signup() {
       case REGISTRATION_STAGE.REQUEST_VERIFICATION_CODE:
         return (
           <RequestVerificationCodePage
-            onContinue={() =>
-              setRegistrationStage(REGISTRATION_STAGE.VERIFY_EMAIL)
-            }
+            onContinue={(email: string) => {
+              setEmail(email);
+              setRegistrationStage(REGISTRATION_STAGE.VERIFY_EMAIL);
+            }}
           />
         );
       case REGISTRATION_STAGE.VERIFY_EMAIL:
-        return <VerifyEmail />;
+        return (
+          <VerifyEmailPage
+            email={email}
+            onContinue={() => setRegistrationStage(REGISTRATION_STAGE.SIGNUP)}
+          />
+        );
       case REGISTRATION_STAGE.SIGNUP:
-        return <CreateUser />;
+        return (
+          <CreateUserPage
+            onContinue={(userId: string) => router.push(`/${userId}`)}
+          />
+        );
     }
   };
 

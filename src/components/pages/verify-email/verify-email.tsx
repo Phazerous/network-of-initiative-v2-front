@@ -1,10 +1,29 @@
+import { useState } from 'react';
 import Button from '../../ui/button/button';
 import Fieldset from '../../ui/fieldset/fieldset';
 
 import styles from './verify-email.module.scss';
+import { verifyEmail } from '../../../lib/requests/signup';
 
-export default function VerifyEmail() {
-  const handleNext = () => {};
+interface VerifyEmailProps {
+  onContinue: () => void;
+  email: string;
+}
+
+export default function VerifyEmailPage({
+  email,
+  onContinue,
+}: VerifyEmailProps) {
+  const [verificationCode, setVerificationCode] = useState('');
+
+  const handleConfirm = async () => {
+    try {
+      await verifyEmail({ email, verificationCode });
+      onContinue();
+    } catch (e) {
+      if (e instanceof Error) console.log(e.message);
+    }
+  };
 
   return (
     <>
@@ -12,6 +31,8 @@ export default function VerifyEmail() {
         <h2>Подтверждение</h2>
         <div className={styles.verify}>
           <Fieldset
+            value={verificationCode}
+            setValue={setVerificationCode}
             type='input'
             label='КОД ВЕРИФИКАЦИИ'
             width={300}
@@ -25,7 +46,7 @@ export default function VerifyEmail() {
         <Button
           content='Продолжить'
           style='primary'
-          onClick={handleNext}
+          onClick={handleConfirm}
         />
       </div>
     </>
