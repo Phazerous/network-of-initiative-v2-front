@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import AccountNav from '../../components/ui/account/account-nav/account-nav';
 import { AccountTabOption } from '../../components/ui/account/account-tab.enum';
+import styles from '../../styles/pages/[userId].module.scss';
+import PersonalInfo from '../../components/ui/account/personal-info/personal-info';
 
 const availableTabs = [
   'personal-info',
@@ -19,13 +21,47 @@ export default function Account() {
   const { userId, tab } = router.query;
 
   if (typeof tab !== 'string' || !availableTabs.includes(tab)) {
-    router.push(`/${userId}/?tab=${availableTabs[0]}`);
+    router.push(`/${userId}?tab=${availableTabs[0]}`);
     return;
   }
 
+  const activeTab = getActiveTab(tab);
+
+  const selectTab = (tab: AccountTabOption) => {
+    if (tab === activeTab) return;
+
+    let tabTitle = '';
+
+    switch (tab) {
+      case AccountTabOption.PERSONAL_INFO:
+        tabTitle = availableTabs[0];
+        break;
+      case AccountTabOption.MY_APPLICATIONS:
+        tabTitle = availableTabs[1];
+        break;
+      case AccountTabOption.MY_INITIATIVES:
+        tabTitle = availableTabs[2];
+        break;
+      case AccountTabOption.MODERATOR_PANEL:
+        tabTitle = availableTabs[3];
+        break;
+      default:
+        throw new Error('Unhandled tab');
+    }
+
+    router.push(`/${userId}?tab=${tabTitle}`);
+  };
+
   return (
-    <div>
-      <AccountNav activeTab={getActiveTab(tab)} />
+    <div className={styles.container}>
+      <main className={styles.main}>
+        <AccountNav
+          activeTab={activeTab}
+          selectTab={selectTab}
+        />
+
+        <PersonalInfo />
+      </main>
     </div>
   );
 }

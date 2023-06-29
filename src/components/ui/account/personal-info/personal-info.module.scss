@@ -1,0 +1,31 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.input {
+  max-width: 250px;
+
+  input {
+    text-align: center;
+  }
+}
+
+.fieldsetRow {
+  display: flex;
+  column-gap: 64px;
+}
+
+.primaryInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.button {
+  margin-top: 16px;
+  width: min-content;
+  align-self: flex-end;
+  padding: 8px 16px;
+}

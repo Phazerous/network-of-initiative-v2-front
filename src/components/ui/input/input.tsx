@@ -5,9 +5,17 @@ interface InputProps {
   value: string;
   setValue: (newValue: string) => void;
   type?: string;
+  size?: 'auth' | 'standard';
 }
 
-export default function Input({ value, setValue, type = 'text' }: InputProps) {
+export default function Input({
+  value,
+  setValue,
+  type = 'text',
+  size = 'standard',
+}: InputProps) {
+  const computedStyles = size === 'auth' ? styles.auth : styles.standard;
+
   return (
     <>
       <input
@@ -15,7 +23,7 @@ export default function Input({ value, setValue, type = 'text' }: InputProps) {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
-        className={styles.input}
+        className={computedStyles}
         type={type}
       />
     </>

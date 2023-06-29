@@ -44,7 +44,7 @@ export default function VerifyEmailPage({
         </div>
 
         <Button
-          content='Продолжить'
+          value='Продолжить'
           style='primary'
           onClick={handleConfirm}
         />

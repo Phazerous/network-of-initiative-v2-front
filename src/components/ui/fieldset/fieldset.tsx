@@ -10,6 +10,7 @@ interface FieldsetProps {
   setValue: (newValue: string) => void;
   width?: number;
   inputType?: 'text' | 'password';
+  className?: string;
 }
 
 export default function Fieldset({
@@ -17,6 +18,7 @@ export default function Fieldset({
   label,
   width,
   value,
+  className,
   setValue,
   inputType,
 }: FieldsetProps) {
@@ -34,10 +36,12 @@ export default function Fieldset({
       />
     );
 
+  const computedStyles = styles.fieldset + ' ' + (className ?? '');
+
   return (
     <>
       <fieldset
-        className={styles.fieldset}
+        className={computedStyles}
         style={width ? { width: `${width}px` } : undefined}>
         <label className={styles.label}>{label}</label>
         {formControls}

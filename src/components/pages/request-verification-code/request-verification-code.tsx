@@ -39,7 +39,7 @@ export default function RequestVerificationCodePage({
             width={300}
           />
           <Button
-            content='Продолжить'
+            value='Продолжить'
             style='primary'
             onClick={handleRequestVerificationCode}
           />

@@ -1,20 +1,26 @@
 interface ButtonProps {
-  content: string;
+  value: string;
   style: 'primary';
   onClick?: () => void;
+  className?: string;
 }
 
 import styles from './button.module.scss';
 
-export default function Button({ content, style, onClick }: ButtonProps) {
-  const buttonStyle = styleLookup[style];
+export default function Button({
+  value,
+  style,
+  onClick,
+  className,
+}: ButtonProps) {
+  const computedStyles = styleLookup[style] + ' ' + (className ?? '');
 
   return (
     <>
       <button
-        className={buttonStyle}
+        className={computedStyles}
         onClick={onClick}>
-        {content}
+        {value}
       </button>
     </>
   );

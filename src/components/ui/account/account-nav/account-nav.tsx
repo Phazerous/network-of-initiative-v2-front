@@ -1,8 +1,12 @@
+import { Router } from 'next/router';
 import { AccountTabOption } from '../account-tab.enum';
 import AccountTab from '../account-tab/account-tab';
 
+import styles from './account-nav.module.scss';
+
 interface AccountNavProps {
   activeTab: AccountTabOption;
+  selectTab: (tab: AccountTabOption) => void;
 }
 
 const accountTabs = [
@@ -12,19 +16,19 @@ const accountTabs = [
   AccountTabOption.MODERATOR_PANEL,
 ];
 
-export default function AccountNav({ activeTab }: AccountNavProps) {
-  const handleSelect = (tab: AccountTabOption) => {};
-
+export default function AccountNav({ activeTab, selectTab }: AccountNavProps) {
   return (
     <>
-      {accountTabs.map((tab) => (
-        <AccountTab
-          key={tab}
-          tab={tab}
-          isActive={tab === activeTab}
-          onClick={() => handleSelect(tab)}
-        />
-      ))}
+      <nav className={styles.nav}>
+        {accountTabs.map((tab) => (
+          <AccountTab
+            key={tab}
+            tab={tab}
+            isActive={tab === activeTab}
+            onClick={() => selectTab(tab)}
+          />
+        ))}
+      </nav>
     </>
   );
 }

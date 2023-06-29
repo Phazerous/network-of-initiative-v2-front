@@ -1,7 +1,22 @@
+.tab {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.idle,
+.active {
+  font-weight: 600;
+}
+
 .idle {
   color: var(--accent-l);
+  font-size: 16px;
 }
 
 .active {
   color: var(--accent);
+  font-size: 18px;
 }

@@ -64,7 +64,7 @@ export default function CreateUserPage({ onContinue }: CreateUserPageProps) {
         </div>
 
         <Button
-          content='Продолжить'
+          value='Продолжить'
           style='primary'
           onClick={handleCreate}
         />

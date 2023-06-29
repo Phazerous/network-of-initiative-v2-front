@@ -21,9 +21,14 @@ body {
 
 input,
 fieldset,
+textarea,
 button {
   border: none;
   outline: none;
+}
+
+textarea {
+  resize: vertical;
 }
 
 h2 {

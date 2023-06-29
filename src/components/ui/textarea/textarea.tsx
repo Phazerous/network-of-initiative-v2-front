@@ -4,9 +4,16 @@ import styles from './textarea.module.scss';
 interface TextareaProps {
   value: string;
   setValue: (newValue: string) => void;
+  size?: 'auth' | 'standard';
 }
 
-export default function Textarea({ value, setValue }: TextareaProps) {
+export default function Textarea({
+  value,
+  setValue,
+  size = 'standard',
+}: TextareaProps) {
+  const computedStyles = size === 'auth' ? styles.auth : styles.standard;
+
   return (
     <>
       <textarea
@@ -14,7 +21,7 @@ export default function Textarea({ value, setValue }: TextareaProps) {
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setValue(e.target.value)
         }
-        className={styles.textarea}></textarea>
+        className={computedStyles}></textarea>
     </>
   );
 }

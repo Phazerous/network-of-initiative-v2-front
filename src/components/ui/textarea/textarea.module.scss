@@ -1,5 +1,9 @@
 @import '../../../styles/global.scss';
 
-.textarea {
-  @include form-controls;
+.standard {
+  @include form-controls-standard;
+}
+
+.auth {
+  @include form-controls-auth;
 }

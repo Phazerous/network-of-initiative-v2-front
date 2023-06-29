@@ -19,7 +19,8 @@ export default function AccountTab({
   isActive,
   onClick,
 }: AccountTabProps) {
-  const computedStyles = isActive ? styles.active : styles.idle;
+  const computedStyles =
+    styles.tab + ' ' + (isActive ? styles.active : styles.idle);
 
   return (
     <>
