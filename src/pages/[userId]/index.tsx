@@ -13,12 +13,11 @@ const availableTabs = [
 
 export default function Account() {
   const router = useRouter();
+  const { userId, tab } = router.query;
 
   if (!router.isReady) {
     return <h1>Loading...</h1>;
   }
-
-  const { userId, tab } = router.query;
 
   if (typeof tab !== 'string' || !availableTabs.includes(tab)) {
     router.push(`/${userId}?tab=${availableTabs[0]}`);
@@ -60,7 +59,7 @@ export default function Account() {
           selectTab={selectTab}
         />
 
-        <PersonalInfo />
+        <PersonalInfo userId={userId as string} />
       </main>
     </div>
   );

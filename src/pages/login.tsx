@@ -2,12 +2,28 @@ import { useState } from 'react';
 import Fieldset from '../components/ui/fieldset/fieldset';
 import styles from '../styles/pages/login.module.scss';
 import Button from '../components/ui/button/button';
+import login from '../lib/requests/login';
+import { useRouter } from 'next/router';
 
 export default function Login() {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {};
+  const handleLogin = async () => {
+    const loginDto = {
+      email,
+      password,
+    };
+
+    try {
+      const userId = await login(loginDto);
+      router.push(`/${userId}`);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>

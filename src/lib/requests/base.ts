@@ -3,9 +3,10 @@ const endpoint = 'http://localhost:3000/api';
 export const get = async (path: string) => {
   const response: Response = await fetch(endpoint + path, {
     method: 'GET',
+    credentials: 'include',
   });
 
-  handleResponse(response);
+  return handleResponse(response);
 };
 
 export const post = async (path: string, data: object) => {
@@ -25,6 +26,8 @@ const handleResponse = async (response: Response) => {
   const json = await extractJSON(response);
 
   if (!response.ok) {
+    if (typeof json.message === 'string') throw new Error(json.message);
+
     let errorMessage = json.message
       ? json.message.join('\n')
       : 'Unhandled error';
