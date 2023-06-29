@@ -1,10 +1,14 @@
+import { NextRouter } from 'next/router';
+
 const endpoint = 'http://localhost:3000/api';
 
-export const get = async (path: string) => {
+export const get = async (path: string, router: NextRouter) => {
   const response: Response = await fetch(endpoint + path, {
     method: 'GET',
     credentials: 'include',
   });
+
+  if (response.status === 401) router.push('/login');
 
   return handleResponse(response);
 };

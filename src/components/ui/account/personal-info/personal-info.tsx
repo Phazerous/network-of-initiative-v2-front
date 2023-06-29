@@ -15,7 +15,7 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
 
   const { data, error } = useSWR(
     userId ? `/${userId}` : null,
-    userId ? get : null,
+    userId ? (url) => get(url, router) : null,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,

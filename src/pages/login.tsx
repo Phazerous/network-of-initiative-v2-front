@@ -4,6 +4,7 @@ import styles from '../styles/pages/login.module.scss';
 import Button from '../components/ui/button/button';
 import login from '../lib/requests/login';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Login() {
   const router = useRouter();
@@ -52,6 +53,15 @@ export default function Login() {
             onClick={handleLogin}
             className={styles.button}
           />
+
+          <div className={styles.alternative}>
+            <p>Еще нет аккаунта?</p>
+            <Link
+              className={styles.link}
+              href='/signup'>
+              Создать
+            </Link>
+          </div>
         </div>
       </main>
     </>

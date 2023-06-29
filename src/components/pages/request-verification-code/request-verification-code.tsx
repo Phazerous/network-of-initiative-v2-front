@@ -4,6 +4,7 @@ import Fieldset from '../../ui/fieldset/fieldset';
 import styles from './request-verification-code.module.scss';
 import { useState } from 'react';
 import { requestVerificationCode } from '../../../lib/requests/signup';
+import Link from 'next/link';
 
 interface RequestVerificationCodePageProps {
   onContinue: (email: string) => void;
@@ -43,6 +44,15 @@ export default function RequestVerificationCodePage({
             style='primary'
             onClick={handleRequestVerificationCode}
           />
+        </div>
+
+        <div className={styles.alternative}>
+          <p>Уже есть аккаунт?</p>
+          <Link
+            className={styles.link}
+            href='/login'>
+            Войти
+          </Link>
         </div>
       </div>
     </>

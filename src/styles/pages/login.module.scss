@@ -10,3 +10,15 @@
 .button {
   margin-top: 16px;
 }
+
+.link {
+  color: var(--primary);
+}
+
+.alternative {
+  display: grid;
+  row-gap: 4px;
+
+  text-align: center;
+  font-size: 14px;
+}

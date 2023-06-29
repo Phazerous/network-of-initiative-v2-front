@@ -25,7 +25,7 @@
 
 .button {
   margin-top: 16px;
-  width: min-content;
+  width: min-content !important;
   align-self: flex-end;
-  padding: 8px 16px;
+  padding: 8px 16px !important;
 }
