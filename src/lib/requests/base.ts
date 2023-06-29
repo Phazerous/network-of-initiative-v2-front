@@ -22,6 +22,19 @@ export const post = async (path: string, data: object) => {
   return handleResponse(response);
 };
 
+export const patch = async (path: string, data: object) => {
+  const response: Response = await fetch(endpoint + path, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    credentials: 'include',
+  });
+
+  return handleResponse(response);
+};
+
 const handleResponse = async (response: Response) => {
   const json = await extractJSON(response);
 

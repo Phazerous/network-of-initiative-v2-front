@@ -3,13 +3,16 @@ import Fieldset from '../../fieldset/fieldset';
 import styles from './personal-info.module.scss';
 import Button from '../../button/button';
 import useSWR from 'swr';
-import { get } from '../../../../lib/requests/base';
+import { get, patch } from '../../../../lib/requests/base';
+import { useRouter } from 'next/router';
 
 interface PersonalInfoProps {
   userId: string;
 }
 
 export default function PersonalInfo({ userId }: PersonalInfoProps) {
+  const router = useRouter();
+
   const { data, error } = useSWR(
     userId ? `/${userId}` : null,
     userId ? get : null,
@@ -41,7 +44,23 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
 
   if (!data) return <h1>Loading...</h1>;
 
-  const handleSave = () => {};
+  const handleSave = async () => {
+    const updateUserDto = {
+      name,
+      lastname,
+      location,
+      university,
+      contact,
+      about,
+    };
+
+    try {
+      await patch(`/${userId}`, updateUserDto);
+      router.reload();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
