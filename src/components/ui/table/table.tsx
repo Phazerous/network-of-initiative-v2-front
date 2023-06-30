@@ -1,29 +1,31 @@
-import TableRow from './table-row/table-row';
+import TableRow, { TableRowProps } from './table-row/table-row';
 
 import styles from './table.module.scss';
 
 interface TableProps {
-  values: string[][];
+  rows: TableRowProps[];
   className?: string;
 }
 
-export default function Table({ values, className }: TableProps) {
-  const headerValues = values[0];
-  const rowsValues = values.slice(1);
+export default function Table({ rows, className }: TableProps) {
+  const headerRow = rows[0];
+  const bodyRows = rows.slice(1);
 
   const computedStyles = `${styles.table} ${className}`;
+
+  console.log(bodyRows, typeof bodyRows);
 
   return (
     <>
       <table className={computedStyles}>
         <thead>
-          <TableRow values={headerValues} />
+          <TableRow {...headerRow} />
         </thead>
         <tbody>
-          {rowsValues.map((rowValues) => (
+          {bodyRows.map((row) => (
             <TableRow
-              key={rowValues[0]}
-              values={rowValues}
+              key={row.values[0]}
+              {...row}
             />
           ))}
         </tbody>

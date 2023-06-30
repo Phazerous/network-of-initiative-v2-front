@@ -1,6 +1,3 @@
-import TableMyApplications from '../components/ui/table-my-applications/table-my-applications';
-import Table from '../components/ui/table/table';
-
 const values = [
   ['ИНИЦИАТИВА', 'СТАТУС'],
   ['Умный менеджер паролей SmartPassword', 'Одобрена'],
@@ -8,9 +5,5 @@ const values = [
 ];
 
 export default function Test() {
-  return (
-    <>
-      <TableMyApplications />
-    </>
-  );
+  return <>{/* <TableMyApplications /> */}</>;
 }

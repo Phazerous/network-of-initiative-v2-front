@@ -3,6 +3,7 @@ import AccountNav from '../../components/ui/account/account-nav/account-nav';
 import { AccountTabOption } from '../../components/ui/account/account-tab.enum';
 import styles from '../../styles/pages/[userId].module.scss';
 import PersonalInfo from '../../components/ui/account/personal-info/personal-info';
+import MyApplications from '../../components/ui/account/my-applications/my-applications';
 
 const availableTabs = [
   'personal-info',
@@ -51,6 +52,17 @@ export default function Account() {
     router.push(`/${userId}?tab=${tabTitle}`);
   };
 
+  const getSelectedSection = () => {
+    switch (activeTab) {
+      case AccountTabOption.PERSONAL_INFO:
+        return <PersonalInfo userId={userId as string} />;
+      case AccountTabOption.MY_APPLICATIONS:
+        return <MyApplications userId={userId as string} />;
+      case AccountTabOption.MY_INITIATIVES:
+      case AccountTabOption.MODERATOR_PANEL:
+    }
+  };
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -59,7 +71,7 @@ export default function Account() {
           selectTab={selectTab}
         />
 
-        <PersonalInfo userId={userId as string} />
+        {getSelectedSection()}
       </main>
     </div>
   );
