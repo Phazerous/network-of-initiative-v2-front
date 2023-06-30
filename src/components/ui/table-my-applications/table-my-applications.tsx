@@ -1,35 +1,43 @@
 import ApplicationShortDto from '../../../dto/application-short-dto';
 import Table from '../table/table';
-import { TableRowProps } from '../table/table-row/table-row';
+import { HeaderCell } from '../table/table-header/table-header';
+import { BodyCell, TableRowProps } from '../table/table-row/table-row';
 import styles from './table-my-applications.module.scss';
 
 interface TableMyApplicationsProps {
   applications: ApplicationShortDto[];
 }
 
-const headerRow = {
-  values: ['ИНИЦИАТИВА', 'СТАТУС'],
-};
-
 export default function TableMyApplications({
   applications,
 }: TableMyApplicationsProps) {
-  const tableRows = applications.map(
-    (it) =>
-      ({
-        values: [it.initiative.title, it.status],
-        onClick: () => console.log(it.initiative.title),
-      } as TableRowProps)
-  );
-
-  const rows = [headerRow, ...tableRows];
+  const bodyRows: TableRowProps[] = applications.map((app) => ({
+    bodyCells: [
+      { value: app.initiative.title },
+      { value: app.status },
+    ] as BodyCell[],
+    onClick: () => console.log(app.id),
+  }));
 
   return (
     <>
       <Table
-        rows={rows}
+        headerCells={headerCells}
+        bodyRows={bodyRows}
         className={styles.table}
       />
     </>
   );
 }
+
+const headerCells: HeaderCell[] = [
+  {
+    value: 'ИНИЦИАТИВА',
+    width: 300,
+    paddingRight: 28,
+  },
+  {
+    value: 'СТАТУС',
+    width: 180,
+  },
+];

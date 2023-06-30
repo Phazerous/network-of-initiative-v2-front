@@ -71,7 +71,7 @@ export default function Account() {
           selectTab={selectTab}
         />
 
-        {getSelectedSection()}
+        <div className={styles.content}>{getSelectedSection()}</div>
       </main>
     </div>
   );
