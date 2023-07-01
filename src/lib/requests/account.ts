@@ -17,6 +17,12 @@ export default async function getUserApplications(
   }
 }
 
+export async function getUserInitiatives(userId: string, router: NextRouter) {
+  const response = await get(`/${userId}/initiatives`, router);
+
+  return response;
+}
+
 export async function redirectToAccount(router: NextRouter) {
   try {
     const response = await get('/account', router);

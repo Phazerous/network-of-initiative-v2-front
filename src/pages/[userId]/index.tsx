@@ -5,6 +5,7 @@ import styles from '../../styles/pages/[userId].module.scss';
 import PersonalInfo from '../../components/ui/account/personal-info/personal-info';
 import MyApplications from '../../components/ui/account/my-applications/my-applications';
 import { redirectToAccount } from '../../lib/requests/account';
+import MyInitiatives from '../../components/ui/account/my-initiatives/my-initiatives';
 
 const availableTabs = [
   'personal-info',
@@ -64,6 +65,7 @@ export default function Account() {
       case AccountTabOption.MY_APPLICATIONS:
         return <MyApplications userId={userId as string} />;
       case AccountTabOption.MY_INITIATIVES:
+        return <MyInitiatives userId={userId as string} />;
       case AccountTabOption.MODERATOR_PANEL:
     }
   };
