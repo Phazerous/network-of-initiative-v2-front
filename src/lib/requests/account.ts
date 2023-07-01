@@ -1,6 +1,6 @@
 import { NextRouter } from 'next/router';
 import ApplicationShortDto from '../../dto/application-short-dto';
-import { get } from './base';
+import { extractText, get } from './base';
 
 export default async function getUserApplications(
   userId: string,
@@ -14,5 +14,15 @@ export default async function getUserApplications(
   } catch (e) {
     console.log(e);
     // TODO REDIRECT LOGIC
+  }
+}
+
+export async function redirectToAccount(router: NextRouter) {
+  try {
+    const response = await get('/account', router);
+    const userId = await extractText(response);
+    router.push(`/${userId}`);
+  } catch (e) {
+    throw e;
   }
 }

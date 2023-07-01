@@ -4,6 +4,8 @@ import Fieldset from '../../../ui/fieldset/fieldset';
 import styles from './initiative-editable.module.scss';
 import Button from '../../../ui/button/button';
 import createInitiative from '../../../../lib/requests/initiatives';
+import { useRouter } from 'next/router';
+import { redirectToAccount } from '../../../../lib/requests/account';
 
 interface InitiativeEditableProps {
   initiative?: InitiativeDto;
@@ -12,6 +14,8 @@ interface InitiativeEditableProps {
 export default function InitiativeEditable({
   initiative,
 }: InitiativeEditableProps) {
+  const router = useRouter();
+
   const [title, setTitle] = useState(initiative?.title ?? '');
   const [stage, setStage] = useState(initiative?.stage ?? '');
   const [location, setLocaiton] = useState(initiative?.location ?? '');
@@ -31,6 +35,7 @@ export default function InitiativeEditable({
 
     try {
       await createInitiative(initiativeDto);
+      redirectToAccount(router);
     } catch (e) {
       console.log(e);
     }

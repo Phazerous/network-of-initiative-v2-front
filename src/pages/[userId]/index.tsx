@@ -4,6 +4,7 @@ import { AccountTabOption } from '../../components/ui/account/account-tab.enum';
 import styles from '../../styles/pages/[userId].module.scss';
 import PersonalInfo from '../../components/ui/account/personal-info/personal-info';
 import MyApplications from '../../components/ui/account/my-applications/my-applications';
+import { redirectToAccount } from '../../lib/requests/account';
 
 const availableTabs = [
   'personal-info',
@@ -15,6 +16,10 @@ const availableTabs = [
 export default function Account() {
   const router = useRouter();
   const { userId, tab } = router.query;
+
+  if (userId === 'account') {
+    redirectToAccount(router);
+  }
 
   if (!router.isReady) {
     return <h1>Loading...</h1>;
