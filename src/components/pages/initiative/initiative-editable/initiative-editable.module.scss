@@ -1,0 +1,22 @@
+.details {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.controls {
+  margin-top: 64px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    padding: 6px 24px;
+  }
+}

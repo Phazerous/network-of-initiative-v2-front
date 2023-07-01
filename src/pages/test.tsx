@@ -1,3 +1,5 @@
+import InitiativeEditable from '../components/pages/initiative/initiative-editable/initiative-editable';
+
 const values = [
   ['ИНИЦИАТИВА', 'СТАТУС'],
   ['Умный менеджер паролей SmartPassword', 'Одобрена'],
@@ -5,5 +7,11 @@ const values = [
 ];
 
 export default function Test() {
-  return <>{/* <TableMyApplications /> */}</>;
+  return (
+    <div className='center-content'>
+      <main>
+        <InitiativeEditable />
+      </main>
+    </div>
+  );
 }

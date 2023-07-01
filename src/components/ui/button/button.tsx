@@ -3,6 +3,7 @@ interface ButtonProps {
   style: 'primary';
   onClick?: () => void;
   className?: string;
+  auto?: boolean;
 }
 
 import styles from './button.module.scss';
@@ -12,6 +13,7 @@ export default function Button({
   style,
   onClick,
   className,
+  auto,
 }: ButtonProps) {
   const computedStyles = styleLookup[style] + ' ' + (className ?? '');
 
@@ -19,6 +21,7 @@ export default function Button({
     <>
       <button
         className={computedStyles}
+        style={{ width: auto ? 'auto' : undefined }}
         onClick={onClick}>
         {value}
       </button>
