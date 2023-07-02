@@ -54,3 +54,27 @@ export async function redirectToAccount(router: NextRouter) {
     throw e;
   }
 }
+
+export interface InitiativeApplicationForInitiator {
+  about: string;
+  applier: {
+    name: string;
+    lastname: string;
+    location: string;
+    university: string;
+    contact: string;
+    about: string;
+  };
+}
+
+export async function getInitiativeApplicationForInitiator(
+  applicationId: string,
+  router: NextRouter
+) {
+  const application = await get(
+    `/applications/${applicationId}?type=initiator`,
+    router
+  );
+
+  return application as InitiativeApplicationForInitiator;
+}

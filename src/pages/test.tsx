@@ -1,4 +1,5 @@
 import InitiativeEditable from '../components/pages/initiative/initiative-editable/initiative-editable';
+import Modal from '../components/ui/modal/modal';
 
 const values = [
   ['ИНИЦИАТИВА', 'СТАТУС'],
@@ -8,10 +9,17 @@ const values = [
 
 export default function Test() {
   return (
-    <div className='center-content'>
-      <main>
-        <InitiativeEditable />
-      </main>
-    </div>
+    <>
+      <div className='center-content'>
+        <main>
+          <InitiativeEditable />
+        </main>
+      </div>
+
+      <Modal>
+        <h1>Hello world</h1>
+        <p>Hello nice sun</p>
+      </Modal>
+    </>
   );
 }

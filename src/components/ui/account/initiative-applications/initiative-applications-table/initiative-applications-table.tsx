@@ -5,6 +5,7 @@ import { BodyCell, TableRowProps } from '../../../table/table-row/table-row';
 
 interface InitiativeApplicationsTableProps {
   applications: InitiativeApplicationShort[];
+  onSelect: (applicationId: string) => void;
 }
 
 const headerCells: HeaderCell[] = [
@@ -21,12 +22,14 @@ const headerCells: HeaderCell[] = [
 
 export default function InitiativeApplicationsTable({
   applications,
+  onSelect,
 }: InitiativeApplicationsTableProps) {
   const bodyRows: TableRowProps[] = applications.map((application) => ({
     bodyCells: [
       { value: application.applier.lastname + ' ' + application.applier.name },
       { value: application.status },
     ] as BodyCell[],
+    onClick: () => onSelect(application.id),
   }));
 
   return (
