@@ -16,7 +16,7 @@ export default function Button({
   onClick,
   className,
   svgIcon,
-  auto,
+  auto = true,
 }: ButtonProps) {
   const computedStyles = styleLookup[style] + ' ' + (className ?? '');
 

@@ -12,3 +12,4 @@ export { default as SvgPlane } from './plane.svg';
 export { default as SvgPencil } from './pencil.svg';
 export { default as SvgSave } from './save.svg';
 export { default as SvgCopy } from './copy.svg';
+export { default as SvgReturn } from './return.svg';

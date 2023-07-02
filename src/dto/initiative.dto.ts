@@ -1,4 +1,5 @@
 export default interface InitiativeDto {
+  id: string;
   title: string;
   description: string;
   searching: string;

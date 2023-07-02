@@ -3,16 +3,17 @@ import InitiativeDto from '../../../../dto/initiative.dto';
 
 import styles from './initiative-editable.module.scss';
 import EditableTextField from '../../../ui/fieldset/fieldset';
+import InitiativeEditableControls from './initiative-editable-controls/initiative-editable-controls';
 
 interface InitiativeEditableProps {
   initiative?: InitiativeDto;
   mode: 'edit' | 'create';
-  onReturn: () => void;
+  handleReturn: () => void;
 }
 
 export default function InitiativeEditable({
   initiative,
-  onReturn,
+  handleReturn,
 }: InitiativeEditableProps) {
   const [title, setTitle] = useState(initiative?.title ?? '');
   const [stage, setStage] = useState(initiative?.stage ?? '');
@@ -20,6 +21,8 @@ export default function InitiativeEditable({
   const [university, setUniversity] = useState(initiative?.university ?? '');
   const [description, setDescription] = useState(initiative?.description ?? '');
   const [searching, setSearching] = useState(initiative?.description ?? '');
+
+  const handleSave = () => {};
 
   return (
     <>
@@ -65,6 +68,11 @@ export default function InitiativeEditable({
         label='КОГО МЫ ИЩЕМ'
         value={searching}
         setValue={setSearching}
+      />
+
+      <InitiativeEditableControls
+        handleReturn={handleReturn}
+        handleSave={handleSave}
       />
     </>
   );

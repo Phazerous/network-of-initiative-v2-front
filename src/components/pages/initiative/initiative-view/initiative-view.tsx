@@ -1,7 +1,6 @@
-import { SvgCopy, SvgPencil, SvgPlane } from '../../../../../public/svgs';
 import InitiativeDto from '../../../../dto/initiative.dto';
-import Button from '../../../ui/button/button';
 import TextField from '../../../ui/text-field/text-field';
+import InitiativeViewControls from './initiative-view-controls/initiative-view-controls';
 import styles from './initiative-view.module.scss';
 
 interface InitiativeViewProps {
@@ -11,6 +10,7 @@ interface InitiativeViewProps {
 
 export default function InitiativeView({
   initiative: {
+    id,
     title,
     stage,
     location,
@@ -21,12 +21,6 @@ export default function InitiativeView({
   },
   onEdit,
 }: InitiativeViewProps) {
-  const handleApply = () => {};
-  const handleCopy = () => {
-    const currentURL = window.location.href;
-    navigator.clipboard.writeText(currentURL);
-  };
-
   return (
     <>
       <TextField
@@ -61,39 +55,11 @@ export default function InitiativeView({
         value={searching}
       />
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          marginTop: '64px',
-        }}>
-        <Button
-          style='secondary'
-          value='Скопировать ссылку'
-          onClick={handleCopy}
-          auto={true}
-          className={styles.stickToLeft}
-          svgIcon={<SvgCopy />}
-        />
-
-        {canEdit ? (
-          <Button
-            style='primary'
-            value='Редактировать'
-            onClick={onEdit}
-            auto={true}
-            svgIcon={<SvgPencil />}
-          />
-        ) : (
-          <Button
-            style='primary'
-            value='Подать заявку'
-            onClick={handleApply}
-            auto={true}
-            svgIcon={<SvgPlane />}
-          />
-        )}
-      </div>
+      <InitiativeViewControls
+        onEdit={onEdit}
+        canEdit={canEdit}
+        initiativeId={id}
+      />
     </>
   );
 }

@@ -27,7 +27,7 @@ export default function InitiativePage() {
             <InitiativeEditable
               initiative={initiative}
               mode='edit'
-              onReturn={() => setEditing(false)}
+              handleReturn={() => setEditing(false)}
             />
           ) : (
             <InitiativeView
