@@ -1,6 +1,7 @@
 import { NextRouter } from 'next/router';
 import ApplicationShortDto from '../../dto/application-short-dto';
 import { extractText, get } from './base';
+import InitiativeShortDto from '../../components/ui/account/my-initiatives/my-initiatives-table/initiative-short.dto';
 
 export default async function getUserApplications(
   userId: string,
@@ -17,10 +18,31 @@ export default async function getUserApplications(
   }
 }
 
+export interface InitiativeApplicationShort {
+  id: string;
+  status: string;
+  applier: {
+    name: string;
+    lastname: string;
+  };
+}
+
+export async function getInitiativeApplications(
+  initiativeId: string,
+  router: NextRouter
+) {
+  const initiatives = await get(
+    `/initiatives/${initiativeId}/applications`,
+    router
+  );
+
+  return initiatives as InitiativeApplicationShort[];
+}
+
 export async function getUserInitiatives(userId: string, router: NextRouter) {
   const response = await get(`/${userId}/initiatives`, router);
 
-  return response;
+  return response as InitiativeShortDto[];
 }
 
 export async function redirectToAccount(router: NextRouter) {

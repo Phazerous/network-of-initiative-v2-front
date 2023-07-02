@@ -7,7 +7,7 @@ export interface BodyCell {
 
 export interface TableRowProps {
   bodyCells: BodyCell[];
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function TableRow({ bodyCells, onClick }: TableRowProps) {

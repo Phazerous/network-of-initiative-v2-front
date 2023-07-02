@@ -17,17 +17,19 @@ const headerCells: HeaderCell[] = [
 
 interface MyInitiativesProps {
   initiatives: InitiativeShortDto[];
+  onSelect?: (initiativeId: string) => void;
 }
 
 export default function MyInitiativesTable({
   initiatives,
+  onSelect,
 }: MyInitiativesProps) {
   const bodyRows: TableRowProps[] = initiatives.map((initiative) => ({
     bodyCells: [
       { value: initiative.title },
       { value: initiative.status },
     ] as BodyCell[],
-    onClick: () => console.log(initiative.id),
+    onClick: () => onSelect && onSelect(initiative.id),
   }));
 
   return (
