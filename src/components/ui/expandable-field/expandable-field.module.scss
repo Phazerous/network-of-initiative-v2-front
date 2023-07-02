@@ -1,0 +1,17 @@
+.text {
+  color: var(--accent-l);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.field {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.svg {
+  display: inline-flex;
+  color: var(--accent-l);
+}

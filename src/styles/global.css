@@ -6,16 +6,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --accent-5: #f6f5f6;
-  --accent-70: #7f7d88;
-  --accent-10: #ededee;
-  --accent-20: #dadadd;
-  --accent-l: #9997a0;
-  --accent: #484554;
-  --primary: #6462dc;
-}
-
 body {
   font-family: 'Nunito Sans', sans-serif;
   height: 100vh;
@@ -75,4 +65,17 @@ p {
 
 a {
   text-decoration: none;
+}
+
+:root {
+  --accent-5: #f6f5f6;
+  --accent-70: #7f7d88;
+  --accent-10: #ededee;
+  --accent-20: #dadadd;
+  --accent-l: #9997a0;
+  --accent: #484554;
+  --primary: #6462dc;
+  --red: #e94443;
+  --green: #58b87e;
+  --blue: #3cb9ff;
 }

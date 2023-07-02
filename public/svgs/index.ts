@@ -2,3 +2,8 @@ export { default as SvgPersonalInfo } from './personal-info.svg';
 export { default as SvgMyApplications } from './my-applications.svg';
 export { default as SvgMyInitiatives } from './my-initiatives.svg';
 export { default as SvgModeratorPanel } from './moderator-panel.svg';
+export { default as SvgLeftAngle } from './left-angle.svg';
+export { default as SvgDownAngle } from './down-angle.svg';
+export { default as SvgDetails } from './details.svg';
+export { default as SvgXMark } from './x-mark.svg';
+export { default as SvgTick } from './tick.svg';

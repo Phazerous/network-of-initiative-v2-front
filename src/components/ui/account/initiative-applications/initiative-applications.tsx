@@ -25,6 +25,7 @@ export default function InitiativeApplications({
       return (
         <InitiatorInitiativeApplicationModal
           applicationId={selectedApplicationId}
+          onClose={() => setSelectedApplicationId('')}
         />
       );
   };

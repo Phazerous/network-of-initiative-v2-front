@@ -1,0 +1,15 @@
+.card {
+  margin-top: 16px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.firstRow {
+  display: flex;
+
+  > *:not(:last-child) {
+    margin-right: 48px;
+  }
+}
