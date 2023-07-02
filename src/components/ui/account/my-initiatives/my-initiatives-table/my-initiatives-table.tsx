@@ -27,7 +27,7 @@ export default function MyInitiativesTable({
   const bodyRows: TableRowProps[] = initiatives.map((initiative) => ({
     bodyCells: [
       { value: initiative.title },
-      { value: initiative.status },
+      { value: initiative.statusText, statusColor: initiative.statusColor },
     ] as BodyCell[],
     onClick: () => onSelect && onSelect(initiative.id),
   }));
