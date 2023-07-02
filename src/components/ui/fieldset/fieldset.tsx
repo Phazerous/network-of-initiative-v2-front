@@ -3,7 +3,7 @@ import Textarea from '../textarea/textarea';
 
 import styles from './fieldset.module.scss';
 
-interface FieldsetProps {
+interface EditableTextFieldProps {
   type: 'textarea' | 'input';
   label: string;
   value: string;
@@ -13,7 +13,7 @@ interface FieldsetProps {
   className?: string;
 }
 
-export default function Fieldset({
+export default function EditableTextField({
   type,
   label,
   width,
@@ -21,7 +21,7 @@ export default function Fieldset({
   className,
   setValue,
   inputType,
-}: FieldsetProps) {
+}: EditableTextFieldProps) {
   const formControls =
     type === 'textarea' ? (
       <Textarea

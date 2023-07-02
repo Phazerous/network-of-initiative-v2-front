@@ -1,0 +1,26 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  justify-content: center;
+
+  main {
+    margin-top: 10vh;
+    width: 690px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    > div:first-of-type {
+      display: flex;
+      column-gap: 48px;
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  width: 100%;
+}

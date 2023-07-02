@@ -11,7 +11,7 @@ export default function TextField({ label, value, width }: TextFieldProps) {
     <>
       <fieldset>
         <label className={styles.label}>{label}</label>
-        <p className={styles.contente}>{value}</p>
+        <p className={styles.content}>{value}</p>
       </fieldset>
     </>
   );

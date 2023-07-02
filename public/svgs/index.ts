@@ -7,3 +7,8 @@ export { default as SvgDownAngle } from './down-angle.svg';
 export { default as SvgDetails } from './details.svg';
 export { default as SvgXMark } from './x-mark.svg';
 export { default as SvgTick } from './tick.svg';
+export { default as SvgCreate } from './create.svg';
+export { default as SvgPlane } from './plane.svg';
+export { default as SvgPencil } from './pencil.svg';
+export { default as SvgSave } from './save.svg';
+export { default as SvgCopy } from './copy.svg';

@@ -4,8 +4,10 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   auto?: boolean;
+  svgIcon?: ReactNode;
 }
 
+import { ReactNode } from 'react';
 import styles from './button.module.scss';
 
 export default function Button({
@@ -13,6 +15,7 @@ export default function Button({
   style,
   onClick,
   className,
+  svgIcon,
   auto,
 }: ButtonProps) {
   const computedStyles = styleLookup[style] + ' ' + (className ?? '');
@@ -21,9 +24,12 @@ export default function Button({
     <>
       <button
         className={computedStyles}
-        style={{ width: auto ? 'auto' : undefined }}
+        style={{
+          width: auto ? 'auto' : undefined,
+        }}
         onClick={onClick}>
         {value}
+        {svgIcon}
       </button>
     </>
   );
