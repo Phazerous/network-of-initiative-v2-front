@@ -5,4 +5,5 @@ export default interface InitiativeDto {
   location: string;
   university: string;
   stage: string;
+  canEdit: boolean;
 }

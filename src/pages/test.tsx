@@ -1,4 +1,4 @@
-import InitiativeEditable from '../components/pages/initiative/initiative-editable/initiative-editable';
+import InitiativeEditable from '../components/pages/initiative/initiative/initiative';
 import Modal from '../components/ui/modal/modal';
 
 const values = [
@@ -15,11 +15,6 @@ export default function Test() {
           <InitiativeEditable />
         </main>
       </div>
-
-      <Modal>
-        <h1>Hello world</h1>
-        <p>Hello nice sun</p>
-      </Modal>
     </>
   );
 }

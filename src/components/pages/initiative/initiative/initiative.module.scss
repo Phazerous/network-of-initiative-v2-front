@@ -1,3 +1,16 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  justify-content: center;
+
+  main {
+    margin-top: 10vh;
+    width: 693px;
+  }
+}
+
 .details {
   display: flex;
   justify-content: space-between;
@@ -18,5 +31,9 @@
 
   button {
     padding: 6px 24px;
+  }
+
+  > *:not(:last-child) {
+    margin-right: 16px;
   }
 }

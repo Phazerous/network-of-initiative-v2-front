@@ -1,6 +1,6 @@
 interface ButtonProps {
   value: string;
-  style: 'primary';
+  style: 'primary' | 'secondary';
   onClick?: () => void;
   className?: string;
   auto?: boolean;
@@ -31,4 +31,5 @@ export default function Button({
 
 const styleLookup = {
   primary: styles.primary,
+  secondary: styles.secondary,
 };
