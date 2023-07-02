@@ -3,6 +3,7 @@ import styles from './table-row.module.scss';
 
 export interface BodyCell {
   value: string;
+  statusColor: string;
 }
 
 export interface TableRowProps {
@@ -17,6 +18,7 @@ export default function TableRow({ bodyCells, onClick }: TableRowProps) {
         <TableCell
           key={idx}
           value={bodyCell.value}
+          statusColor={bodyCell.statusColor}
         />
       ))}
     </tr>

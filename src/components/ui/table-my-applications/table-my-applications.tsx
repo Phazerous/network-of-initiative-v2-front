@@ -14,7 +14,7 @@ export default function TableMyApplications({
   const bodyRows: TableRowProps[] = applications.map((app) => ({
     bodyCells: [
       { value: app.initiative.title },
-      { value: app.status },
+      { value: app.statusText, statusColor: app.statusColor },
     ] as BodyCell[],
     onClick: () => console.log(app.id),
   }));
