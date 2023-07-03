@@ -1,0 +1,21 @@
+.rejected,
+.details,
+.approved {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 8px;
+  padding: 6px 24px;
+  color: #fff;
+}
+
+.rejected {
+  background-color: var(--red);
+}
+
+.details {
+  background-color: var(--blue);
+}
+
+.approved {
+  background-color: var(--green);
+}

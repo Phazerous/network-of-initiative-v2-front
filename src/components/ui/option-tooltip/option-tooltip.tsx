@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { isValidElement, useState } from 'react';
 import styles from './option-tooltip.module.scss';
 import { SvgDots } from '../../../../public/svgs';
 
@@ -13,13 +13,14 @@ interface OptionTooltipProps {
 
 export default function OptionTooltip({ options }: OptionTooltipProps) {
   const [show, setShow] = useState(false);
-
-  console.log(show, options);
+  const [modal, setModal] = useState<any>(undefined);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>, func: any) => {
     e.stopPropagation();
 
-    func();
+    const obj = func();
+
+    if (isValidElement(obj)) setModal(obj);
   };
 
   const handleOptionsClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -53,6 +54,8 @@ export default function OptionTooltip({ options }: OptionTooltipProps) {
           })}
         </div>
       )}
+
+      {modal}
     </>
   );
 }

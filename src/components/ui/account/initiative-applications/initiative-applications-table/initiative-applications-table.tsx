@@ -1,7 +1,10 @@
 import { InitiativeApplicationShort } from '../../../../../lib/requests/account';
+import OptionTooltip from '../../../option-tooltip/option-tooltip';
 import Table from '../../../table/table';
 import { HeaderCell } from '../../../table/table-header/table-header';
 import { BodyCell, TableRowProps } from '../../../table/table-row/table-row';
+import AnswerField from '../../answer-field/answer-field';
+import MyApplication from '../../my-application/my-application';
 
 interface InitiativeApplicationsTableProps {
   applications: InitiativeApplicationShort[];
@@ -18,6 +21,10 @@ const headerCells: HeaderCell[] = [
     value: 'СТАТУС',
     width: 140,
   },
+  {
+    width: 31,
+    value: <span style={{ visibility: 'hidden' }}>O</span>,
+  },
 ];
 
 export default function InitiativeApplicationsTable({
@@ -28,6 +35,23 @@ export default function InitiativeApplicationsTable({
     bodyCells: [
       { value: application.applier.lastname + ' ' + application.applier.name },
       { value: application.status },
+      {
+        value: (
+          <OptionTooltip
+            options={[
+              {
+                value: 'Подробнее',
+                onClick: () => (
+                  <MyApplication
+                    applicationId={application.id}
+                    onClose={() => console.log('close')}
+                  />
+                ),
+              },
+            ]}
+          />
+        ),
+      },
     ] as BodyCell[],
     onClick: () => onSelect(application.id),
   }));

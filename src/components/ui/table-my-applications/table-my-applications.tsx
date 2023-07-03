@@ -1,4 +1,6 @@
 import ApplicationShortDto from '../../../dto/application-short-dto';
+import MyApplication from '../account/my-application/my-application';
+import OptionTooltip from '../option-tooltip/option-tooltip';
 import Table from '../table/table';
 import { HeaderCell } from '../table/table-header/table-header';
 import { BodyCell, TableRowProps } from '../table/table-row/table-row';
@@ -15,6 +17,23 @@ export default function TableMyApplications({
     bodyCells: [
       { value: app.initiative.title },
       { value: app.statusText, statusColor: app.statusColor },
+      {
+        value: (
+          <OptionTooltip
+            options={[
+              {
+                value: 'Подробнее',
+                onClick: () => (
+                  <MyApplication
+                    applicationId={app.id}
+                    onClose={() => console.log('close')}
+                  />
+                ),
+              },
+            ]}
+          />
+        ),
+      },
     ] as BodyCell[],
     onClick: () => console.log(app.id),
   }));
@@ -39,5 +58,9 @@ const headerCells: HeaderCell[] = [
   {
     value: 'СТАТУС',
     width: 180,
+  },
+  {
+    width: 31,
+    value: <span style={{ visibility: 'hidden' }}>O</span>,
   },
 ];
