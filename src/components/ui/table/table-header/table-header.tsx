@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import TableCell from '../table-cell/table-cell';
 import styles from './table-header.module.scss';
 
 export interface HeaderCell {
-  value: string;
+  value: string | ReactNode;
   width: number;
   paddingRight?: number;
 }

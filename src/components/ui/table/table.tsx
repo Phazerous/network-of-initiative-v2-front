@@ -10,6 +10,8 @@ interface TableProps {
 }
 
 export default function Table({ headerCells, bodyRows }: TableProps) {
+  console.log(bodyRows);
+
   return (
     <>
       <table className={styles.table}>

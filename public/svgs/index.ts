@@ -14,3 +14,4 @@ export { default as SvgSave } from './save.svg';
 export { default as SvgCopy } from './copy.svg';
 export { default as SvgReturn } from './return.svg';
 export { default as SvgTickSmall } from './tick-small.svg';
+export { default as SvgDots } from './dots.svg';

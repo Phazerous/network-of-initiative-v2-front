@@ -1,10 +1,12 @@
+import { ReactNode, isValidElement, useState } from 'react';
 import styles from './table-cell.module.scss';
 
 interface TableCellProps {
-  value: string;
+  value: string | ReactNode;
   statusColor?: string;
   width?: number;
   paddingRight?: number;
+  onClick?: () => any;
 }
 
 export default function TableCell({
@@ -12,11 +14,31 @@ export default function TableCell({
   width,
   paddingRight,
   statusColor,
+  onClick,
 }: TableCellProps) {
+  const [conditionalRendring, setConditionalRendering] =
+    useState<any>(undefined);
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (onClick) {
+      e.stopPropagation();
+      const res = onClick();
+
+      if (isValidElement(res)) setConditionalRendering(res);
+      if (conditionalRendring) setConditionalRendering(undefined);
+    }
+  };
+
   return (
     <>
       <td>
-        <div style={{ width: width, paddingRight: `${paddingRight}px` }}>
+        <div
+          onClick={handleClick}
+          style={{
+            width: width,
+            paddingRight: `${paddingRight}px`,
+            height: '100%',
+          }}>
           {statusColor && (
             <div
               className={styles.status}
@@ -30,6 +52,7 @@ export default function TableCell({
               }}></div>
           )}
           {value}
+          {conditionalRendring}
         </div>
       </td>
     </>
