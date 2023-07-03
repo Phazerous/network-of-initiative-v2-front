@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import InitiativeDto from '../../../../dto/initiative.dto';
-
 import styles from './initiative-editable.module.scss';
 import EditableTextField from '../../../ui/fieldset/fieldset';
 import InitiativeEditableControls from './initiative-editable-controls/initiative-editable-controls';
+import InitiativeCreationControls from './initiative-creation-controls/initiative-creation-controls';
 
 interface InitiativeEditableProps {
   initiative?: InitiativeDto;
   mode: 'edit' | 'create';
-  handleReturn: () => void;
+  handleReturn?: () => void;
 }
 
 export default function InitiativeEditable({
+  mode,
   initiative,
   handleReturn,
 }: InitiativeEditableProps) {
@@ -70,10 +71,25 @@ export default function InitiativeEditable({
         setValue={setSearching}
       />
 
-      <InitiativeEditableControls
-        handleReturn={handleReturn}
-        handleSave={handleSave}
-      />
+      {mode === 'edit' && handleReturn && (
+        <InitiativeEditableControls
+          handleReturn={handleReturn}
+          handleSave={handleSave}
+        />
+      )}
+
+      {mode === 'create' && (
+        <InitiativeCreationControls
+          initiative={{
+            title,
+            stage,
+            location,
+            university,
+            description,
+            searching,
+          }}
+        />
+      )}
     </>
   );
 }
