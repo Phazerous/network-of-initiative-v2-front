@@ -1,0 +1,18 @@
+.checked,
+.unchecked {
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--accent-l);
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+}
+
+.checked {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-l);
+}

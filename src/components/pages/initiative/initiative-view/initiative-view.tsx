@@ -56,6 +56,7 @@ export default function InitiativeView({
       />
 
       <InitiativeViewControls
+        title={title}
         onEdit={onEdit}
         canEdit={canEdit}
         initiativeId={id}

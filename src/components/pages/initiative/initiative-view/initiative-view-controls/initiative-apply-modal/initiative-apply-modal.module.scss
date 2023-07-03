@@ -1,0 +1,48 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 16px;
+}
+
+.agreement {
+  display: flex;
+  justify-content: center;
+  column-gap: 8px;
+
+  p {
+    span {
+      cursor: pointer;
+      text-decoration: underline;
+      color: var(--primary);
+    }
+  }
+}
+
+.checkbox {
+  border: 1px solid var(--primary);
+}
+
+.checked,
+.unchecked {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--accent-l);
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+}
+
+.checked {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-l);
+}

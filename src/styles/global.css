@@ -75,6 +75,7 @@ a {
   --accent-l: #9997a0;
   --accent: #484554;
   --primary: #6462dc;
+  --primary-l: hsla(265, 100%, 96%, 1);
   --red: #e94443;
   --green: #58b87e;
   --blue: #3cb9ff;
