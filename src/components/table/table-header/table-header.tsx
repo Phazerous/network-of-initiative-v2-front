@@ -8,7 +8,7 @@ interface TableHeaderProps {
 export default function TableHeader({ children }: TableHeaderProps) {
   return (
     <>
-      <thead className={styles.headerRow}>{children}</thead>
+      <thead className={styles.header}>{children}</thead>
     </>
   );
 }

@@ -1,0 +1,13 @@
+.menu {
+  position: absolute;
+  width: min-content;
+
+  padding: 16px 24px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--accent-10);
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}

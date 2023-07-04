@@ -1,12 +1,16 @@
 .table {
   border-collapse: collapse;
 
-  tr td:first-child div {
+  tr td:first-child > div {
     padding-left: 16px;
   }
 
-  tr td:last-child div {
+  tr td:last-child > div {
     padding-right: 16px;
+  }
+
+  td {
+    height: inherit;
   }
 
   tr td {
@@ -14,17 +18,17 @@
       border: 1px solid var(--accent-20);
     }
 
-    &:first-child div {
+    &:first-child > div {
       border-right: none;
     }
 
-    &:last-child div {
+    &:last-child > div {
       border-left: none;
     }
 
-    &:not(:first-child):not(:last-child) div {
+    &:not(:first-child):not(:last-child) > div {
       border-left: none;
-      border-radius: none;
+      border-right: none;
     }
   }
 }

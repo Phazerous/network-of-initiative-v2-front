@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface TableCellProps {
-  children: ReactNode;
+  children?: ReactNode;
   onClick?: (data: any) => void;
 }
 
@@ -11,7 +11,7 @@ export default function TableCell({ children, onClick }: TableCellProps) {
       <td
         style={{ userSelect: 'none' }}
         onClick={onClick}>
-        <div>{children}</div>
+        <div style={{ height: '100%' }}>{children}</div>
       </td>
     </>
   );
