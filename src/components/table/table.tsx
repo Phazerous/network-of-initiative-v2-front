@@ -1,13 +1,15 @@
 import { ReactNode } from 'react';
+import styles from './table.module.scss';
 
 interface TableProps {
   children: ReactNode;
+  className?: string;
 }
 
-export default function Table({ children }: TableProps) {
+export default function Table({ children, className }: TableProps) {
   return (
     <>
-      <table>{children}</table>
+      <table className={`${styles.table} ${className}`}>{children}</table>
     </>
   );
 }

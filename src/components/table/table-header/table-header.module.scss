@@ -1,0 +1,22 @@
+.headerRow {
+  td {
+    > div {
+      font-size: 12px;
+      text-transform: uppercase;
+
+      padding-top: 6px;
+      padding-bottom: 6px;
+
+      background-color: var(--accent-10);
+      color: var(--accent-70);
+    }
+
+    &:first-child div {
+      border-top-left-radius: 4px;
+    }
+
+    &:last-child div {
+      border-top-right-radius: 4px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.body {
+  td div {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 400;
+
+    border-top: none !important;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  tr:last-child td {
+    &:first-child div {
+      border-bottom-left-radius: 4px;
+    }
+
+    &:last-child div {
+      border-bottom-right-radius: 4px;
+    }
+  }
+}

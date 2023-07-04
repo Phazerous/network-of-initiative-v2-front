@@ -5,7 +5,7 @@ import styles from '../../styles/pages/[userId].module.scss';
 import PersonalInfo from '../../components/ui/account/personal-info/personal-info';
 import MyApplications from '../../components/ui/account/my-applications/my-applications';
 import { redirectToAccount } from '../../lib/requests/account';
-import MyInitiatives from '../../components/ui/account/my-initiatives/my-initiatives';
+// import MyInitiatives from '../../components/ui/account/my-initiatives/my-initiatives';
 
 const availableTabs = [
   'personal-info',
@@ -20,11 +20,11 @@ export default function Account() {
 
   if (userId === 'account') {
     redirectToAccount(router);
-  }
+  } // DELETE
 
   if (!router.isReady) {
     return <h1>Loading...</h1>;
-  }
+  } // FIX
 
   if (typeof tab !== 'string' || !availableTabs.includes(tab)) {
     router.push(`/${userId}?tab=${availableTabs[0]}`);
@@ -64,9 +64,9 @@ export default function Account() {
         return <PersonalInfo userId={userId as string} />;
       case AccountTabOption.MY_APPLICATIONS:
         return <MyApplications userId={userId as string} />;
-      case AccountTabOption.MY_INITIATIVES:
-        return <MyInitiatives userId={userId as string} />;
-      case AccountTabOption.MODERATOR_PANEL:
+      // case AccountTabOption.MY_INITIATIVES:
+      //   return <MyInitiatives userId={userId as string} />;
+      // case AccountTabOption.MODERATOR_PANEL:
     }
   };
 
