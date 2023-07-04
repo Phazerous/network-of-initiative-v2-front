@@ -1,20 +1,21 @@
-import InitiativeEditable from '../components/pages/initiative/initiative/initiative';
-import Modal from '../components/ui/modal/modal';
-
-const values = [
-  ['ИНИЦИАТИВА', 'СТАТУС'],
-  ['Умный менеджер паролей SmartPassword', 'Одобрена'],
-  ['Разработка портала для Проектной практики ИИКС НИЯУ МИФИ', 'Отклонена'],
-];
+import ModalMyApplication from '../components/ui/modals-r/modal-my-application/modal-my-application';
+import { useModalContext } from '../hooks/modal-context';
 
 export default function Test() {
+  const { modal, setModal } = useModalContext();
+
   return (
     <>
-      <div className='center-content'>
-        <main>
-          <InitiativeEditable />
-        </main>
-      </div>
+      <button
+        onClick={() =>
+          setModal(
+            <ModalMyApplication
+              applicationId={'ae00119d-5c3b-4a5c-8c50-f2f904b054bd'}
+            />
+          )
+        }>
+        Open modal
+      </button>
     </>
   );
 }

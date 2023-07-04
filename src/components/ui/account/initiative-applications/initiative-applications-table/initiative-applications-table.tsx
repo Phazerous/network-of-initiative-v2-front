@@ -3,7 +3,6 @@ import OptionTooltip from '../../../option-tooltip/option-tooltip';
 import Table from '../../../table/table';
 import { HeaderCell } from '../../../table/table-header/table-header';
 import { BodyCell, TableRowProps } from '../../../table/table-row/table-row';
-import AnswerField from '../../answer-field/answer-field';
 import MyApplication from '../../my-application/my-application';
 
 interface InitiativeApplicationsTableProps {
