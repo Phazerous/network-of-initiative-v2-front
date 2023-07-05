@@ -70,17 +70,15 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
             <Fieldset
               type='input'
               label='ИМЯ'
-              value={name}
+              content={name}
               setValue={setName}
-              className={styles.input}
             />
 
             <Fieldset
               type='input'
               label='ФАМИЛИЯ'
-              value={lastname}
+              content={lastname}
               setValue={setLastname}
-              className={styles.input}
             />
           </div>
 
@@ -88,17 +86,15 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
             <Fieldset
               type='input'
               label='ГОРОД'
-              value={location}
+              content={location}
               setValue={setLocation}
-              className={styles.input}
             />
 
             <Fieldset
               type='input'
               label='ВУЗ'
-              value={university}
+              content={university}
               setValue={setUniversity}
-              className={styles.input}
             />
           </div>
 
@@ -106,17 +102,15 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
             <Fieldset
               type='input'
               label='ПОЧТА'
-              value={email}
+              content={email}
               setValue={setEmail}
-              className={styles.input}
             />
 
             <Fieldset
               type='input'
               label='КОНТАКТНАЯ ИНФОРМАЦИЯ'
-              value={contact}
+              content={contact}
               setValue={setContact}
-              className={styles.input}
             />
           </div>
         </div>
@@ -124,15 +118,14 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
         <Fieldset
           label='О СЕБЕ'
           type='textarea'
-          value={about}
+          content={about}
           setValue={setAbout}
         />
 
         <Button
-          value='Сохранить изменения'
+          content='Сохранить изменения'
           style='primary'
           onClick={handleSave}
-          className={styles.button}
         />
       </section>
     </>

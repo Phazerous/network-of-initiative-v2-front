@@ -2,16 +2,16 @@ import React from 'react';
 import ApplicationShortDto from '../../../dto/application-short-dto';
 import { useActionMenu } from '../../../hooks/action-menu';
 import { useModalContext } from '../../../hooks/modal-context';
-import TableMore from '../../table/table-more/table-more';
-import TableOption from '../../table-option/table-option';
-import TableOptions from '../../table-options/table-options';
-import Table from '../../table/table';
-import TableBody from '../../table/table-body/table-body';
-import TableHeader from '../../table/table-header/table-header';
-import TableCell from '../../table/table-row/table-cell/table-cell';
-import TableRow from '../../table/table-row/table-row';
-import ModalMyApplication from '../modals-r/modal-my-application/modal-my-application';
 import styles from './table-my-applications.module.scss';
+import TableOptions from '../table/table-options/table-options';
+import TableOption from '../table/table-option/table-option';
+import ModalMyApplication from '../modals/modal-my-application/modal-my-application';
+import Table from '../table/table';
+import TableHeader from '../table/table-header/table-header';
+import TableRow from '../table/table-row/table-row';
+import TableCell from '../table/table-row/table-cell/table-cell';
+import TableBody from '../table/table-body/table-body';
+import TableMore from '../table/table-more/table-more';
 
 interface TableMyApplicationsProps {
   applications: ApplicationShortDto[];

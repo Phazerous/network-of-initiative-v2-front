@@ -19,8 +19,9 @@ export default function AccountTab({
   isActive,
   onClick,
 }: AccountTabProps) {
-  const computedStyles =
-    styles.tab + ' ' + (isActive ? styles.active : styles.idle);
+  const computedStyles = `${styles.tab} ${
+    isActive ? styles.active : styles.idle
+  }`;
 
   return (
     <>
@@ -28,7 +29,7 @@ export default function AccountTab({
         className={computedStyles}
         onClick={onClick}>
         {getTabIcon(tab)}
-        {tab}
+        {getTabName(tab)}
       </div>
     </>
   );
@@ -44,5 +45,18 @@ function getTabIcon(tab: AccountTabOption) {
       return <SvgMyInitiatives />;
     case AccountTabOption.MODERATOR_PANEL:
       return <SvgModeratorPanel />;
+  }
+}
+
+function getTabName(tab: AccountTabOption) {
+  switch (tab) {
+    case AccountTabOption.PERSONAL_INFO:
+      return 'Личные данные';
+    case AccountTabOption.MY_APPLICATIONS:
+      return 'Мои заявки';
+    case AccountTabOption.MY_INITIATIVES:
+      return 'Мои инициативы';
+    case AccountTabOption.MODERATOR_PANEL:
+      return 'Модераторская панель';
   }
 }

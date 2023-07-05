@@ -1,6 +1,7 @@
 .dots {
   display: inline-flex;
   padding: 2.2px 5px;
-  border: 1px solid var(--accent-10);
+  // border: 1px solid var(--accent-5);
+  border-radius: 4px;
   color: var(--accent);
 }

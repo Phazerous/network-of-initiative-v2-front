@@ -50,7 +50,7 @@ export default function ModalInitiativeApply({
             <div className={styles.buttonContainer}>
               <Button
                 style='primary'
-                content='Send'
+                content='Отправить'
                 svgIcon={<SvgPlane />}
                 onClick={handleSend}
               />

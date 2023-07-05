@@ -1,4 +1,3 @@
-import { Router } from 'next/router';
 import { AccountTabOption } from '../account-tab.enum';
 import AccountTab from '../account-tab/account-tab';
 

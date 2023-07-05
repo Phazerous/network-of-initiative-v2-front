@@ -2,9 +2,9 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { getInitiative } from '../../../lib/requests/initiatives';
 import { useState } from 'react';
-import InitiativeView from '../../../components/pages/initiative/initiative-view/initiative-view';
-import InitiativeEditable from '../../../components/pages/initiative/initiative-editable/initiative-editable';
 import styles from '../../../styles/pages/[initiativeId].module.scss';
+import InitiativeEditable from '../../../components/ui/initiative/initiative-editable/initiative-editable';
+import InitiativeView from '../../../components/ui/initiative/initiative-view/initiative-view';
 
 export default function InitiativePage() {
   const router = useRouter();
