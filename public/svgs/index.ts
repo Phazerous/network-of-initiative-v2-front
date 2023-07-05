@@ -16,3 +16,5 @@ export { default as SvgReturn } from './return.svg';
 export { default as SvgTickSmall } from './tick-small.svg';
 export { default as SvgDots } from './dots.svg';
 export { default as SvgAngleRight } from './angle-right.svg';
+export { default as SvgLogo } from './logo.svg';
+export { default as SvgUser } from './user.svg';

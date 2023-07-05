@@ -4,6 +4,7 @@ import '../styles/global.css';
 import { ModalContext } from '../hooks/modal-context';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { ActionMenuContext } from '../hooks/action-menu';
+import NavbarLayout from '../layouts/navbar/navbar';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [actionMenu, setActionMenu] = useState<ReactNode | undefined>(
@@ -37,7 +38,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       {modal}
       <ActionMenuContext.Provider value={{ setActionMenu, actionMenu }}>
         <div ref={wrapperRef}>{actionMenu}</div>
-        <Component {...pageProps} />;
+        <NavbarLayout>
+          <Component {...pageProps} />;
+        </NavbarLayout>
       </ActionMenuContext.Provider>
     </ModalContext.Provider>
   );

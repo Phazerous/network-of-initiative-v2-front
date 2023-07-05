@@ -1,0 +1,20 @@
+.navbar {
+  width: 100%;
+  background-color: var(--primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 926px;
+  padding: 12px 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--white);
+}
