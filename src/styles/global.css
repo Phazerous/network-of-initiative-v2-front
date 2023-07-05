@@ -80,4 +80,9 @@ a {
   --red: #e94443;
   --green: #58b87e;
   --blue: #3cb9ff;
+
+  --onReview: #e9d843;
+  --addDetails: #3cb9ff;
+  --approve: #58b87e;
+  --reject: #e94443;
 }

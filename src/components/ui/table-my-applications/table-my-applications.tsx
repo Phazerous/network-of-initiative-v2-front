@@ -1,5 +1,4 @@
 import React from 'react';
-import ApplicationShortDto from '../../../dto/application-short-dto';
 import { useActionMenu } from '../../../hooks/action-menu';
 import { useModalContext } from '../../../hooks/modal-context';
 import styles from './table-my-applications.module.scss';
@@ -12,16 +11,18 @@ import TableRow from '../table/table-row/table-row';
 import TableCell from '../table/table-row/table-cell/table-cell';
 import TableBody from '../table/table-body/table-body';
 import TableMore from '../table/table-more/table-more';
+import ApplicationForUserDto from '../../../dto/application-short-dto';
+import Status from '../status/status';
 
 interface TableMyApplicationsProps {
-  applications: ApplicationShortDto[];
+  applications: ApplicationForUserDto[];
 }
 
 export default function TableMyApplications({
   applications,
 }: TableMyApplicationsProps) {
-  const { actionMenu, setActionMenu } = useActionMenu();
-  const { modal, setModal } = useModalContext();
+  const { setActionMenu } = useActionMenu();
+  const { setModal } = useModalContext();
 
   const showContextMenu = (
     e: React.MouseEvent<HTMLTableCellElement>,
@@ -55,7 +56,9 @@ export default function TableMyApplications({
         {applications.map((app, idx) => (
           <TableRow key={idx}>
             <TableCell>{app.initiative.title}</TableCell>
-            <TableCell>{app.statusText}</TableCell>
+            <TableCell>
+              <Status statusCode={app.status} />
+            </TableCell>
             <TableCell
               onClick={(e: React.MouseEvent<HTMLTableCellElement>) =>
                 showContextMenu(e, app.id)

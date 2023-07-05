@@ -1,0 +1,33 @@
+.statusIcon {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+
+  margin-right: 8px;
+}
+
+.onReview {
+  background-color: var(--onReview);
+}
+
+.approved {
+  background-color: var(--approve);
+}
+
+.rejected {
+  background-color: var(--reject);
+}
+
+.addDetials {
+  background-color: var(--addDetails);
+}
+
+.text {
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+}

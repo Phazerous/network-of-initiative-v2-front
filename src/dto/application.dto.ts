@@ -1,4 +1,4 @@
-export default interface ApplicationForUserDto {
+export default interface ApplicationDto {
   id: string;
   status: number;
   statusText: string;
