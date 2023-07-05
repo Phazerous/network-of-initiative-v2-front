@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Fieldset from '../components/ui/fieldset/fieldset';
+import Fieldset from '../components/ui/editable-text-field/editable-text-field';
 import styles from '../styles/pages/login.module.scss';
 import Button from '../components/ui/button/button';
 import login from '../lib/requests/login';

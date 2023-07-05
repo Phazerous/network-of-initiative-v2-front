@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { SvgCopy, SvgPencil, SvgPlane } from '../../../../../../public/svgs';
 import Button from '../../../../ui/button/button';
 import InitiativeControls from '../../initiative-controls/initiative-controls';
-import InitiativeApplyModal from './initiative-apply-modal/initiative-apply-modal';
+import { useModalContext } from '../../../../../hooks/modal-context';
+import ModalInitiativeApply from '../../../../ui/modals/modal-initaitive-apply/modal-initiative-apply';
 
 interface InitiativeViewControlsProps {
   title: string;
@@ -17,11 +17,20 @@ export default function InitiativeViewControls({
   onEdit,
   canEdit,
 }: InitiativeViewControlsProps) {
-  const [isApplying, setApplying] = useState(false);
+  const { setModal } = useModalContext();
 
   const handleCopy = () => {
     const currentURL = window.location.href;
     navigator.clipboard.writeText(currentURL);
+  };
+
+  const handleApply = () => {
+    setModal(
+      <ModalInitiativeApply
+        title={title}
+        initiativeId={initiativeId}
+      />
+    );
   };
 
   return (
@@ -30,9 +39,8 @@ export default function InitiativeViewControls({
         <div style={{ marginRight: 'auto', display: 'inline' }}>
           <Button
             style='secondary'
-            value='Скопировать ссылку'
+            content='Скопировать ссылку'
             onClick={handleCopy}
-            auto={true}
             svgIcon={<SvgCopy />}
           />
         </div>
@@ -40,29 +48,19 @@ export default function InitiativeViewControls({
         {!canEdit ? (
           <Button
             style='primary'
-            value='Редактировать'
+            content='Редактировать'
             onClick={onEdit}
-            auto={true}
             svgIcon={<SvgPencil />}
           />
         ) : (
           <Button
             style='primary'
-            value='Подать заявку'
-            onClick={() => setApplying(true)}
-            auto={true}
+            content='Подать заявку'
+            onClick={handleApply}
             svgIcon={<SvgPlane />}
           />
         )}
       </InitiativeControls>
-
-      {isApplying && (
-        <InitiativeApplyModal
-          title={title}
-          initiativeId={initiativeId}
-          handleClose={() => setApplying(false)}
-        />
-      )}
     </>
   );
 }

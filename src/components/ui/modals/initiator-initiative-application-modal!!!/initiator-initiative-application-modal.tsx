@@ -7,7 +7,7 @@ import ExpandableField from '../../expandable-field/expandable-field';
 import { useState } from 'react';
 import styles from './initiator-initiative-application-modal.module.scss';
 import UserCard from '../../../user-card/user-card';
-import Fieldset from '../../fieldset/fieldset';
+import Fieldset from '../../editable-text-field/editable-text-field';
 import ActionButton, {
   ActionButtonType,
 } from '../../action-button/action-button';

@@ -2,7 +2,7 @@ import React from 'react';
 import ApplicationShortDto from '../../../dto/application-short-dto';
 import { useActionMenu } from '../../../hooks/action-menu';
 import { useModalContext } from '../../../hooks/modal-context';
-import TableMore from '../../table-more/table-more';
+import TableMore from '../../table/table-more/table-more';
 import TableOption from '../../table-option/table-option';
 import TableOptions from '../../table-options/table-options';
 import Table from '../../table/table';

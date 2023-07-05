@@ -1,4 +1,4 @@
-import { SvgTickSmall } from '../../../public/svgs';
+import { SvgTickSmall } from '../../../../public/svgs';
 import styles from './checkbox.module.scss';
 
 interface CheckboxProps {

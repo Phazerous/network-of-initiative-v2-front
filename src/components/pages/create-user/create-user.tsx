@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Button from '../../ui/button/button';
-import Fieldset from '../../ui/fieldset/fieldset';
+import Fieldset from '../../ui/editable-text-field/editable-text-field';
 
 import styles from './create-user.module.scss';
 import { createUser } from '../../../lib/requests/signup';

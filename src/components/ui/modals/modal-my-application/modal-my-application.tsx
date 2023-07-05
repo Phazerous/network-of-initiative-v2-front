@@ -2,21 +2,18 @@ import { useRouter } from 'next/router';
 import { getMyApplication } from '../../../../lib/requests/applications';
 import Modal from '../../modal/modal';
 import useSWR from 'swr';
-import styles from './my-application.module.scss';
+import styles from './modal-my-application.module.scss';
 import TextField from '../../text-field/text-field';
-import AnswerField from '../answer-field/answer-field';
+import AnswerField from '../../account/answer-field/answer-field';
 
-interface MyApplicationProps {
+interface ModalMyApplication {
   applicationId: string;
-  onClose: () => void;
 }
 
-export default function MyApplication({
+export default function ModalMyApplication({
   applicationId,
-  onClose,
-}: MyApplicationProps) {
+}: ModalMyApplication) {
   const router = useRouter();
-
   const { data: application, error } = useSWR(applicationId, (applicationId) =>
     getMyApplication(applicationId, router)
   );
@@ -32,7 +29,7 @@ export default function MyApplication({
 
   return (
     <>
-      <Modal onClose={onClose}>
+      <Modal>
         <div className={styles.content}>
           <h1>{title}</h1>
           <TextField

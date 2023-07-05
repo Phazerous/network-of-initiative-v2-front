@@ -1,5 +1,5 @@
 import { get, post } from './base';
-import { NextRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 
 export interface ApplicationDto {
   about: string;

@@ -1,42 +1,39 @@
 import Input from '../input/input';
 import Textarea from '../textarea/textarea';
-
-import styles from './fieldset.module.scss';
+import styles from './editable-text-field.module.scss';
 
 interface EditableTextFieldProps {
   type: 'textarea' | 'input';
   label: string;
-  value: string;
+  content: string;
   setValue: (newValue: string) => void;
   width?: number;
   inputType?: 'text' | 'password';
-  className?: string;
 }
 
 export default function EditableTextField({
   type,
   label,
   width,
-  value,
-  className,
+  content,
   setValue,
   inputType,
 }: EditableTextFieldProps) {
   const formControls =
     type === 'textarea' ? (
       <Textarea
-        value={value}
+        value={content}
         setValue={setValue}
       />
     ) : (
       <Input
         type={inputType}
-        value={value}
+        value={content}
         setValue={setValue}
       />
     );
 
-  const computedStyles = styles.fieldset + ' ' + (className ?? '');
+  const computedStyles = styles.fieldset;
 
   return (
     <>

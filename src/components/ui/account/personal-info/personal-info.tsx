@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Fieldset from '../../fieldset/fieldset';
+import Fieldset from '../../editable-text-field/editable-text-field';
 import styles from './personal-info.module.scss';
 import Button from '../../button/button';
 import useSWR from 'swr';

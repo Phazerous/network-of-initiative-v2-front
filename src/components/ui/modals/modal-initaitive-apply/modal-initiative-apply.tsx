@@ -1,29 +1,23 @@
-import { useState } from 'react';
-import EditableTextField from '../../../../../ui/fieldset/fieldset';
-import Modal from '../../../../../ui/modal/modal';
-import Button from '../../../../../ui/button/button';
-import {
-  SvgPlane,
-  SvgTick,
-  SvgTickSmall,
-} from '../../../../../../../public/svgs';
-import styles from './initiative-apply-modal.module.scss';
-import Checkbox from '../../../../../checkbox/checkbox';
-import { postApplication } from '../../../../../../lib/requests/applications';
-import { redirectToAccount } from '../../../../../../lib/requests/account';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { postApplication } from '../../../../lib/requests/applications';
+import { redirectToAccount } from '../../../../lib/requests/account';
+import EditableTextField from '../../editable-text-field/editable-text-field';
+import Modal from '../../modal/modal';
+import Button from '../../button/button';
+import { SvgPlane } from '../../../../../public/svgs';
+import styles from './modal-initiative-apply.module.scss';
+import Checkbox from '../../checkbox/checkbox';
 
-interface InitiativeApplyModalProps {
+interface ModalInitiativeApplyProps {
   initiativeId: string;
   title: string;
-  handleClose: () => void;
 }
 
-export default function InitiativeApplyModal({
+export default function ModalInitiativeApply({
   initiativeId,
   title,
-  handleClose,
-}: InitiativeApplyModalProps) {
+}: ModalInitiativeApplyProps) {
   const router = useRouter();
 
   const [about, setAbout] = useState('');
@@ -42,13 +36,13 @@ export default function InitiativeApplyModal({
 
   return (
     <>
-      <Modal onClose={handleClose}>
+      <Modal>
         <div className={styles.content}>
           <h1>{title}</h1>
           <EditableTextField
             type='textarea'
             label='РАССКАЖИТЕ О СЕБЕ'
-            value={about}
+            content={about}
             setValue={setAbout}
           />
 
@@ -56,7 +50,7 @@ export default function InitiativeApplyModal({
             <div className={styles.buttonContainer}>
               <Button
                 style='primary'
-                value='Отправить'
+                content='Send'
                 svgIcon={<SvgPlane />}
                 onClick={handleSend}
               />

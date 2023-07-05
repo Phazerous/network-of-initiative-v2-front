@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import InitiativeDto from '../../../../dto/initiative.dto';
 import styles from './initiative-editable.module.scss';
-import EditableTextField from '../../../ui/fieldset/fieldset';
+import EditableTextField from '../../../ui/editable-text-field/editable-text-field';
 import InitiativeEditableControls from './initiative-editable-controls/initiative-editable-controls';
 import InitiativeCreationControls from './initiative-creation-controls/initiative-creation-controls';
 
@@ -30,7 +30,7 @@ export default function InitiativeEditable({
       <EditableTextField
         type='input'
         label='НАЗВАНИЕ ИНИЦИАТИВЫ'
-        value={title}
+        content={title}
         setValue={setTitle}
       />
 
@@ -38,21 +38,21 @@ export default function InitiativeEditable({
         <EditableTextField
           type='input'
           label='СТАТУС'
-          value={stage}
+          content={stage}
           setValue={setStage}
         />
 
         <EditableTextField
           type='input'
           label='ГОРОД'
-          value={location}
+          content={location}
           setValue={setLocation}
         />
 
         <EditableTextField
           type='input'
           label='ВУЗ'
-          value={university}
+          content={university}
           setValue={setUniversity}
         />
       </div>
@@ -60,14 +60,14 @@ export default function InitiativeEditable({
       <EditableTextField
         type='textarea'
         label='ОПИСАНИЕ ПРОЕКТА'
-        value={description}
+        content={description}
         setValue={setDescription}
       />
 
       <EditableTextField
         type='textarea'
         label='КОГО МЫ ИЩЕМ'
-        value={searching}
+        content={searching}
         setValue={setSearching}
       />
 

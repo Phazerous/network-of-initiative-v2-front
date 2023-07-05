@@ -1,24 +1,31 @@
 import { ReactNode } from 'react';
-
 import styles from './modal.module.scss';
 import { SvgXMark } from '../../../../public/svgs';
+import { useModalContext } from '../../../hooks/modal-context';
 
 interface ModalProps {
   children: ReactNode;
-  onClose: () => void;
 }
 
-export default function Modal({ children, onClose }: ModalProps) {
+export default function Modal({ children }: ModalProps) {
+  const { setModal } = useModalContext();
+
+  const handleCloseModal = () => {
+    setModal(undefined);
+  };
+
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
-        <div
-          className={styles.close}
-          onClick={onClose}>
-          <SvgXMark />
+    <>
+      <div className={styles.blackout}>
+        <div className={styles.modalWrapper}>
+          {children}
+          <div
+            className={styles.close}
+            onClick={handleCloseModal}>
+            <SvgXMark />
+          </div>
         </div>
-        {children}
       </div>
-    </div>
+    </>
   );
 }

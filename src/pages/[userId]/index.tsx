@@ -62,26 +62,28 @@ export default function Account() {
     switch (activeTab) {
       case AccountTabOption.PERSONAL_INFO:
         return <PersonalInfo userId={userId as string} />;
-      case AccountTabOption.MY_APPLICATIONS:
-        return <MyApplications userId={userId as string} />;
+      // case AccountTabOption.MY_APPLICATIONS:
+      //   return <MyApplications userId={userId as string} />;
       // case AccountTabOption.MY_INITIATIVES:
       //   return <MyInitiatives userId={userId as string} />;
       // case AccountTabOption.MODERATOR_PANEL:
     }
   };
 
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <AccountNav
-          activeTab={activeTab}
-          selectTab={selectTab}
-        />
+  return <></>;
 
-        <div className={styles.content}>{getSelectedSection()}</div>
-      </main>
-    </div>
-  );
+  // return (
+  //   <div className={styles.container}>
+  //     <main className={styles.main}>
+  //       <AccountNav
+  //         activeTab={activeTab}
+  //         selectTab={selectTab}
+  //       />
+
+  //       <div className={styles.content}>{getSelectedSection()}</div>
+  //     </main>
+  //   </div>
+  // );
 }
 
 function getActiveTab(tab: string) {

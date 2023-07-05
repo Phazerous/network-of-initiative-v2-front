@@ -7,7 +7,7 @@ import { getInitiativeApplications } from '../../../../lib/requests/account';
 import { useRouter } from 'next/router';
 import InitiativeApplicationsTable from './initiative-applications-table/initiative-applications-table';
 import { useState } from 'react';
-import InitiatorInitiativeApplicationModal from '../../modals/initiator-initiative-application-modal/initiator-initiative-application-modal';
+import InitiatorInitiativeApplicationModal from '../../modals-r/initiator-initiative-application-modal/initiator-initiative-application-modal';
 
 export default function InitiativeApplications({
   initiativeId,
