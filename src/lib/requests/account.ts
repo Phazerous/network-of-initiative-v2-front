@@ -1,7 +1,7 @@
 import { NextRouter } from 'next/router';
 import ApplicationShortDto from '../../dto/application-short-dto';
 import { extractText, get } from './base';
-import InitiativeShortDto from '../../components/ui/account/my-initiatives/my-initiatives-table/initiative-short.dto';
+import InitiativeShortDto from '../../dto/initiative-short.dto';
 
 export default async function getUserApplications(
   userId: string,
