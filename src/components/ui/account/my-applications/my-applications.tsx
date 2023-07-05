@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import getUserApplications from '../../../../lib/requests/account';
 import TableMyApplications from '../../table-my-applications/table-my-applications';
-import { NextRouter, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 interface MyApplicationsProps {
   userId: string;

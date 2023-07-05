@@ -11,7 +11,7 @@ import TableRow from '../table/table-row/table-row';
 import TableCell from '../table/table-row/table-cell/table-cell';
 import TableBody from '../table/table-body/table-body';
 import TableMore from '../table/table-more/table-more';
-import ApplicationForUserDto from '../../../dto/application-short-dto';
+import ApplicationForUserDto from '../../../dto/application-for-user.dto';
 import Status from '../status/status';
 
 interface TableMyApplicationsProps {

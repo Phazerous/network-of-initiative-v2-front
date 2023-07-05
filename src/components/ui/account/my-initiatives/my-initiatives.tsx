@@ -2,8 +2,10 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { getUserInitiatives } from '../../../../lib/requests/account';
 import { useState } from 'react';
-import InitiativeApplications from '../initiative-applications/initiative-applications';
 import TableMyInitiatives from '../../table-my-initiatives/table-my-initiatives';
+import MyInitiativeApplications from './my-initiative-applications/my-initiative-applications';
+import styles from './my-initiatives.module.scss';
+import { SvgAngleRight } from '../../../../../public/svgs';
 
 interface MyInitiativesProps {
   userId: string;
@@ -19,28 +21,38 @@ export default function MyInitiatives({ userId }: MyInitiativesProps) {
 
   if (!initiatives) return <h1>Loading...</h1>;
 
-  if (selectedInitiativeId) {
-    const selectedInitiative = initiatives.find(
-      (it) => it.id === selectedInitiativeId
-    )!;
-
-    // return (
-    //   <>
-    //     <div onClick={() => setSelectedInitiativeId('')}>
-    //       <h5>Все инициативы</h5>
-    //     </div>
-    //     <MyInitiativesTable initiatives={[selectedInitiative]} />
-    //     <InitiativeApplications initiativeId={selectedInitiativeId} />
-    //   </>
-    // );
-  }
-
   return (
     <>
-      <TableMyInitiatives
-        onInitiativeSelect={() => console.log('later')}
-        initiatives={initiatives}
-      />
+      {selectedInitiativeId ? (
+        <div>
+          <div
+            className={styles.allInitiatives}
+            onClick={() => setSelectedInitiativeId('')}>
+            <p>Все инициативы</p>
+            <SvgAngleRight />
+          </div>
+          <TableMyInitiatives
+            initiatives={[
+              initiatives.find(
+                (initinative) => initinative.id === selectedInitiativeId
+              )!,
+            ]}
+          />
+        </div>
+      ) : (
+        <TableMyInitiatives
+          onInitiativeSelect={(initaitiveId: string) =>
+            setSelectedInitiativeId(initaitiveId)
+          }
+          initiatives={initiatives}
+        />
+      )}
+
+      {selectedInitiativeId && (
+        <div className={styles.applications}>
+          <MyInitiativeApplications initiativeId={selectedInitiativeId} />
+        </div>
+      )}
     </>
   );
 }

@@ -1,25 +1,23 @@
 import { useRouter } from 'next/router';
 import { getInitiativeApplicationForInitiator } from '../../../../lib/requests/account';
-import Modal from '../../modal/modal';
 import useSWR from 'swr';
-import TextField from '../../text-field/text-field';
 import ExpandableField from '../../expandable-field/expandable-field';
 import { useState } from 'react';
-import styles from './initiator-initiative-application-modal.module.scss';
-import UserCard from '../../../user-card/user-card';
+import styles from './modal-initiator-initiative-application.module.scss';
 import Fieldset from '../../editable-text-field/editable-text-field';
 import ActionButton, {
   ActionButtonType,
 } from '../../action-button/action-button';
+import Modal from '../../modal/modal';
+import TextField from '../../text-field/text-field';
+import UserCard from '../../user-card/user-card';
 
 interface InitiatorInitiativeApplicationModalProps {
   applicationId: string;
-  onClose: () => void;
 }
 
-export default function InitiatorInitiativeApplicationModal({
+export default function ModalInitiatorInitiativeApplication({
   applicationId,
-  onClose,
 }: InitiatorInitiativeApplicationModalProps) {
   const router = useRouter();
 
@@ -38,7 +36,7 @@ export default function InitiatorInitiativeApplicationModal({
 
   return (
     <>
-      <Modal onClose={onClose}>
+      <Modal>
         <div className={styles.content}>
           <TextField
             label='РАССКАЖИТЕ О СЕБЕ'
@@ -57,7 +55,7 @@ export default function InitiatorInitiativeApplicationModal({
           <Fieldset
             type='textarea'
             label='ОТВЕТ КАНДИДАТУ'
-            value={answer}
+            content={answer}
             setValue={setAnswer}
           />
 

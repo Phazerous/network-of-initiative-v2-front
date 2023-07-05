@@ -1,7 +1,9 @@
 import { NextRouter } from 'next/router';
-import ApplicationShortDto from '../../dto/application-short-dto';
+import ApplicationShortDto from '../../dto/application-for-user.dto';
 import { extractText, get } from './base';
 import InitiativeShortDto from '../../dto/initiative-short.dto';
+import ApplicationForInitiatorDto from '../../dto/application-for-initiator-short.dto';
+import ApplicationForInitiatorShortDto from '../../dto/application-for-initiator-short.dto';
 
 export default async function getUserApplications(
   userId: string,
@@ -36,7 +38,7 @@ export async function getInitiativeApplications(
     router
   );
 
-  return initiatives as InitiativeApplicationShort[];
+  return initiatives as ApplicationForInitiatorShortDto[];
 }
 
 export async function getUserInitiatives(userId: string, router: NextRouter) {

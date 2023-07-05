@@ -14,7 +14,7 @@ import styles from './table-my-initiatives.module.scss';
 
 interface TableMyInitiativesProps {
   initiatives: InitiativeShortDto[];
-  onInitiativeSelect: (initiativeId: string) => void;
+  onInitiativeSelect?: (initiativeId: string) => void;
 }
 
 export default function TableMyInitiatives({
@@ -57,7 +57,9 @@ export default function TableMyInitiatives({
         {initiatives.map((initiative, idx) => (
           <TableRow
             key={idx}
-            onClick={() => onInitiativeSelect(initiative.id)}>
+            onClick={() =>
+              onInitiativeSelect && onInitiativeSelect(initiative.id)
+            }>
             <TableCell>{initiative.title}</TableCell>
             <TableCell>
               <Status statusCode={initiative.status} />

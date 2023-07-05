@@ -1,4 +1,4 @@
-import TextField from '../ui/text-field/text-field';
+import TextField from '../text-field/text-field';
 import styles from './user-card.module.scss';
 
 interface UserCardProps {

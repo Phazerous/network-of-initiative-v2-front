@@ -5,4 +5,8 @@ export default interface ApplicationDto {
   initiative: {
     title: string;
   };
+  applier: {
+    name: string;
+    lastname: string;
+  };
 }
