@@ -16,7 +16,7 @@ export default function Button({
   svgIcon,
   stretch = false,
 }: ButtonProps) {
-  console.log(content);
+  console.log(stretch);
 
   const computedStyles = `${styles.button} ${styleLookup[style]}`;
 
@@ -24,7 +24,7 @@ export default function Button({
     <button
       className={computedStyles}
       style={{
-        width: stretch ? undefined : 'auto',
+        width: stretch ? '100%' : undefined,
       }}
       onClick={onClick}>
       {content}

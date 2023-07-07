@@ -33,14 +33,14 @@ export default function RequestVerificationCodePage({
 
         <div className={styles.form}>
           <Fieldset
-            value={email}
+            content={email}
             setValue={setEmail}
             type='input'
             label='ПОЧТА'
             width={300}
           />
           <Button
-            value='Продолжить'
+            content='Продолжить'
             style='primary'
             onClick={handleRequestVerificationCode}
           />

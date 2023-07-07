@@ -32,21 +32,21 @@ export default function CreateUserPage({ onContinue }: CreateUserPageProps) {
 
         <div className={styles.form}>
           <Fieldset
-            value={name}
+            content={name}
             setValue={setName}
             width={300}
             type='input'
             label='ИМЯ'
           />
           <Fieldset
-            value={lastname}
+            content={lastname}
             setValue={setLastname}
             width={300}
             type='input'
             label='ФАМИЛИЯ'
           />
           <Fieldset
-            value={password}
+            content={password}
             setValue={setPassword}
             width={300}
             type='input'
@@ -54,7 +54,7 @@ export default function CreateUserPage({ onContinue }: CreateUserPageProps) {
             label='ПАРОЛЬ'
           />
           <Fieldset
-            value={confirmPassword}
+            content={confirmPassword}
             setValue={setConfirmPassword}
             width={300}
             type='input'
@@ -64,8 +64,9 @@ export default function CreateUserPage({ onContinue }: CreateUserPageProps) {
         </div>
 
         <Button
-          value='Продолжить'
+          content='Продолжить'
           style='primary'
+          stretch={true}
           onClick={handleCreate}
         />
       </div>

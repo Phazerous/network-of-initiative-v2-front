@@ -35,7 +35,7 @@ export default function Login() {
           <Fieldset
             label='ПОЧТА'
             type='input'
-            value={email}
+            content={email}
             setValue={setEmail}
           />
 
@@ -43,15 +43,15 @@ export default function Login() {
             label='ПАРОЛЬ'
             type='input'
             inputType='password'
-            value={password}
+            content={password}
             setValue={setPassword}
           />
 
           <Button
             style='primary'
-            value='Продолжить'
+            content='Продолжить'
             onClick={handleLogin}
-            className={styles.button}
+            stretch={true}
           />
 
           <div className={styles.alternative}>

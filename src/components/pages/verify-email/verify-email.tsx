@@ -31,7 +31,7 @@ export default function VerifyEmailPage({
         <h2>Подтверждение</h2>
         <div className={styles.verify}>
           <Fieldset
-            value={verificationCode}
+            content={verificationCode}
             setValue={setVerificationCode}
             type='input'
             label='КОД ВЕРИФИКАЦИИ'
@@ -44,7 +44,7 @@ export default function VerifyEmailPage({
         </div>
 
         <Button
-          value='Продолжить'
+          content='Продолжить'
           style='primary'
           onClick={handleConfirm}
         />
