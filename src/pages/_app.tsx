@@ -10,10 +10,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const [actionMenu, setActionMenu] = useState<ReactNode | undefined>(
     undefined
   );
+
   const [modal, setModal] = useState<ReactNode | undefined>(undefined);
 
   useEffect(() => {
-    if (modal) setActionMenu(undefined);
+    if (modal) {
+      setActionMenu(undefined);
+    }
   }, [modal]);
 
   const wrapperRef = useRef<HTMLDivElement>(null);

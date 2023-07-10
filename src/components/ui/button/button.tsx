@@ -16,8 +16,6 @@ export default function Button({
   svgIcon,
   stretch = false,
 }: ButtonProps) {
-  console.log(stretch);
-
   const computedStyles = `${styles.button} ${styleLookup[style]}`;
 
   return (

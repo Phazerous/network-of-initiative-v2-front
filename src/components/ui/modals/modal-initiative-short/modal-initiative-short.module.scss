@@ -1,5 +1,14 @@
 .content {
   display: flex;
   flex-direction: column;
-  row-gap: 64px;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.button {
+  margin-top: 64px;
 }
