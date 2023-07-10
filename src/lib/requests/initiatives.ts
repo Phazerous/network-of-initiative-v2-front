@@ -15,3 +15,25 @@ export async function getInitiative(initiativeId: string, router: NextRouter) {
 
   return initiative;
 }
+
+export async function getInitiatives(router: NextRouter) {
+  const initiatives = await get(`/initiatives`, router);
+
+  return initiatives as Pick<InitiativeDto, 'id' | 'title' | 'location'>[];
+}
+
+export async function getInitiativeShort(
+  initaitiveId: string,
+  router: NextRouter
+) {
+  const initiative = await get(
+    `/initiatives/${initaitiveId}?type=short`,
+    router
+  );
+
+  // TODO ADD DATE
+  return initiative as Pick<
+    InitiativeDto,
+    'title' | 'description' | 'location' | 'university' | 'stage'
+  >;
+}

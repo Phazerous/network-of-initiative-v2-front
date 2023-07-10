@@ -1,0 +1,11 @@
+.table {
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+
+  thead tr td {
+    &:nth-child(1) div {
+      width: 506px;
+    }
+  }
+}
