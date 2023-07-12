@@ -1,9 +1,10 @@
 import { NextRouter } from 'next/router';
 import ApplicationShortDto from '../../dto/application-for-user.dto';
-import { extractText, get } from './base';
+import { extractText, get, patch } from './base';
 import InitiativeShortDto from '../../dto/initiative-short.dto';
 import ApplicationForInitiatorShortDto from '../../dto/application-for-initiator-short.dto';
 import LoginDto from '../../dto/login-dto';
+import UpdateUserDto from '../../dto/update-user.dto';
 
 export default async function getUserApplications(
   userId: string,
@@ -84,5 +85,9 @@ export async function getInitiativeApplicationForInitiator(
 //
 
 export async function getUserProfile(userId: string, router: NextRouter) {
-  return await get(`/users/${userId}/profile`, router);
+  return await get(`/users/${userId}`, router);
+}
+
+export async function updateUser(userId: string, updateUserDto: UpdateUserDto) {
+  return await patch(`/users/${userId}`, updateUserDto);
 }

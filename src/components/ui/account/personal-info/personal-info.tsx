@@ -5,7 +5,7 @@ import Button from '../../button/button';
 import useSWR from 'swr';
 import { get, patch } from '../../../../lib/requests/base';
 import { useRouter } from 'next/router';
-import { getUserProfile } from '../../../../lib/requests/account';
+import { getUserProfile, updateUser } from '../../../../lib/requests/account';
 
 interface PersonalInfoProps {
   userId: string;
@@ -51,7 +51,7 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
     };
 
     try {
-      await patch(`/${userId}`, updateUserDto);
+      await updateUser(userId, updateUserDto);
       router.reload();
     } catch (e) {
       console.log(e);

@@ -17,7 +17,7 @@ export default function InitiativeEditableControls({
         <div style={{ display: 'inline', marginRight: '16px' }}>
           <Button
             style='secondary'
-            value='Вернуться'
+            content='Вернуться'
             svgIcon={<SvgReturn />}
             onClick={handleReturn}
           />
@@ -25,7 +25,7 @@ export default function InitiativeEditableControls({
 
         <Button
           style='primary'
-          value='Сохранить изменения'
+          content='Сохранить изменения'
           svgIcon={<SvgSave />}
           onClick={handleSave}
         />
