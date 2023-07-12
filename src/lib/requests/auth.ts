@@ -1,3 +1,6 @@
+import CreateUserDto from '../../dto/create-user.dto';
+import LoginDto from '../../dto/login-dto';
+import VerifyEmailDto from '../../dto/verify-email.dto';
 import { extractText, post } from './base';
 
 export const requestVerificationCode = async (email: string) => {
@@ -8,30 +11,26 @@ export const requestVerificationCode = async (email: string) => {
   return await post('/auth/request-verification-code', data);
 };
 
-interface VerifyEmailDto {
-  email: string;
-  verificationCode: string;
-}
-
 export const verifyEmail = async (verifyEmailDto: VerifyEmailDto) => {
   return await post('/auth/verify-email', verifyEmailDto);
 };
-
-interface CreateUserDto {
-  name: string;
-  lastname: string;
-  password: string;
-}
 
 export const createUser = async (createUserDto: CreateUserDto) => {
   try {
     const response = await post('/auth/signup', createUserDto);
     const userId = await extractText(response);
-
-    if (!userId) throw Error(`UserId wasn't provided`);
-
-    return userId;
+    return userId!;
   } catch (e) {
     throw e;
   }
 };
+
+export async function loginUser(loginDto: LoginDto) {
+  try {
+    const response = await post(`/auth/login`, loginDto);
+    const userId = await extractText(response);
+    return userId;
+  } catch (e) {
+    throw e;
+  }
+}

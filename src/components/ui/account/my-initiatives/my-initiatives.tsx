@@ -6,6 +6,7 @@ import TableMyInitiatives from '../../table-my-initiatives/table-my-initiatives'
 import MyInitiativeApplications from './my-initiative-applications/my-initiative-applications';
 import styles from './my-initiatives.module.scss';
 import { SvgAngleRight } from '../../../../../public/svgs';
+import Spinner from '../../spinner/spinner';
 
 interface MyInitiativesProps {
   userId: string;
@@ -19,7 +20,9 @@ export default function MyInitiatives({ userId }: MyInitiativesProps) {
     getUserInitiatives(userId, router)
   );
 
-  if (!initiatives) return <h1>Loading...</h1>;
+  if (!initiatives) return <Spinner />;
+
+  if (initiatives.length === 0) return <h2>У вас еще нет своих инициатив</h2>;
 
   return (
     <>

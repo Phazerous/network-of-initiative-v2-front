@@ -3,7 +3,7 @@ import Button from '../../ui/button/button';
 import Fieldset from '../../ui/editable-text-field/editable-text-field';
 
 import styles from './create-user.module.scss';
-import { createUser } from '../../../lib/requests/signup';
+import { createUser } from '../../../lib/requests/auth';
 
 interface CreateUserPageProps {
   onContinue: (userId: string) => void;

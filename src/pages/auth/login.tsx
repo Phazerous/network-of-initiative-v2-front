@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import Fieldset from '../components/ui/editable-text-field/editable-text-field';
-import styles from '../styles/pages/login.module.scss';
-import Button from '../components/ui/button/button';
-import login from '../lib/requests/login';
+import Fieldset from '../../components/ui/editable-text-field/editable-text-field';
+import styles from '../../styles/pages/login.module.scss';
+import Button from '../../components/ui/button/button';
+// import login from '../../lib/requests/login';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { loginUser } from '../../lib/requests/auth';
 
 export default function Login() {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function Login() {
     };
 
     try {
-      const userId = await login(loginDto);
+      const userId = await loginUser(loginDto);
       router.push(`/${userId}`);
     } catch (e) {
       console.log(e);
@@ -58,7 +59,7 @@ export default function Login() {
             <p>Еще нет аккаунта?</p>
             <Link
               className={styles.link}
-              href='/signup'>
+              href='/auth/signup'>
               Создать
             </Link>
           </div>

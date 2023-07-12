@@ -3,7 +3,7 @@ import Button from '../../ui/button/button';
 import Fieldset from '../../ui/editable-text-field/editable-text-field';
 
 import styles from './verify-email.module.scss';
-import { verifyEmail } from '../../../lib/requests/signup';
+import { verifyEmail } from '../../../lib/requests/auth';
 
 interface VerifyEmailProps {
   onContinue: () => void;
@@ -39,7 +39,7 @@ export default function VerifyEmailPage({
           />
           <p className={styles.para}>
             Код верификации был отправлен <br />
-            на почту <span className={styles.span}>nphazerous@gmail.com</span>
+            на почту <span className={styles.span}>{email}</span>
           </p>
         </div>
 

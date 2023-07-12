@@ -1,17 +1,9 @@
 import InitiativeDto from '../../dto/initiative.dto';
-import { get, post } from './base';
+import { extractText, get, post } from './base';
 import { NextRouter } from 'next/router';
 
-export default async function createInitiative(
-  initiativeDto: Omit<InitiativeDto, 'canEdit'>
-) {
-  const response = await post('/initiatives/new', initiativeDto);
-
-  return response;
-}
-
 export async function getInitiative(initiativeId: string, router: NextRouter) {
-  const initiative = await get(`/initiatives/${initiativeId}`, router);
+  const initiative = await get(`/initiatives/${initiativeId}/full`, router);
 
   return initiative;
 }
@@ -26,14 +18,26 @@ export async function getInitiativeShort(
   initaitiveId: string,
   router: NextRouter
 ) {
-  const initiative = await get(
-    `/initiatives/${initaitiveId}?type=short`,
-    router
-  );
+  const initiative = await get(`/initiatives/${initaitiveId}/short`, router);
 
   // TODO ADD DATE
   return initiative as Pick<
     InitiativeDto,
     'title' | 'description' | 'location' | 'university' | 'stage'
   >;
+}
+
+///
+
+export async function createInitiative(
+  initiativeDto: Omit<InitiativeDto, 'id' | 'canEdit' | 'status'>
+) {
+  try {
+    const response = await post('/initiatives/new', initiativeDto);
+    const initiativeId = await extractText(response);
+
+    return initiativeId;
+  } catch (e) {
+    throw e;
+  }
 }

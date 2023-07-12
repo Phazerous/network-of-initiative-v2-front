@@ -1,10 +1,9 @@
-import { useRouter } from 'next/router';
 import Button from '../../ui/button/button';
 import Fieldset from '../../ui/editable-text-field/editable-text-field';
 import styles from './request-verification-code.module.scss';
 import { useState } from 'react';
-import { requestVerificationCode } from '../../../lib/requests/signup';
 import Link from 'next/link';
+import { requestVerificationCode } from '../../../lib/requests/auth';
 
 interface RequestVerificationCodePageProps {
   onContinue: (email: string) => void;
@@ -50,7 +49,7 @@ export default function RequestVerificationCodePage({
           <p>Уже есть аккаунт?</p>
           <Link
             className={styles.link}
-            href='/login'>
+            href='/auth/login'>
             Войти
           </Link>
         </div>

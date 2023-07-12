@@ -28,6 +28,8 @@ export default function InitiativesPage() {
     );
   };
 
+  console.log(initiatives);
+
   return (
     <>
       <Table className={styles.table}>

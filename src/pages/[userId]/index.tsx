@@ -49,7 +49,6 @@ export default function Account() {
         return <MyApplications userId={userId as string} />;
       case AccountTabOption.MY_INITIATIVES:
         return <MyInitiatives userId={userId as string} />;
-      // case AccountTabOption.MODERATOR_PANEL:
     }
   };
 

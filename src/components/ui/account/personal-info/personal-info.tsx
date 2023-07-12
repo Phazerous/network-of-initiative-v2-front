@@ -5,6 +5,7 @@ import Button from '../../button/button';
 import useSWR from 'swr';
 import { get, patch } from '../../../../lib/requests/base';
 import { useRouter } from 'next/router';
+import { getUserProfile } from '../../../../lib/requests/account';
 
 interface PersonalInfoProps {
   userId: string;
@@ -13,13 +14,8 @@ interface PersonalInfoProps {
 export default function PersonalInfo({ userId }: PersonalInfoProps) {
   const router = useRouter();
 
-  const { data, error } = useSWR(
-    userId ? `/${userId}` : null,
-    userId ? (url) => get(url, router) : null,
-    {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
+  const { data, error } = useSWR(userId, (userId) =>
+    getUserProfile(userId, router)
   );
 
   const [name, setName] = useState('');

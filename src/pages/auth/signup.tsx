@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import RequestVerificationCodePage from '../components/pages/request-verification-code/request-verification-code';
-import { requestVerificationCode } from '../lib/requests/signup';
-import VerifyEmailPage from '../components/pages/verify-email/verify-email';
-import CreateUserPage from '../components/pages/create-user/create-user';
+import RequestVerificationCodePage from '../../components/pages/request-verification-code/request-verification-code';
+import VerifyEmailPage from '../../components/pages/verify-email/verify-email';
+import CreateUserPage from '../../components/pages/create-user/create-user';
 import { useRouter } from 'next/router';
 
 enum REGISTRATION_STAGE {
