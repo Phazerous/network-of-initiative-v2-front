@@ -19,7 +19,7 @@ const availableTabs = [
 export default function Account() {
   const router = useRouter();
   const { userId, tab } = router.query;
-  const { data: actualUserId, error } = useSWR('zab', () => getUserId(router));
+  const { data: actualUserId, error } = useSWR('zab', () => getUserId());
 
   if (!router.isReady) return <Spinner />;
 

@@ -17,10 +17,8 @@ export default function ModalInitiativeShort({
 }: ModalInitiativeShortProps) {
   const { setModal } = useModalContext();
   const router = useRouter();
-  const { data: initiative, error } = useSWR(
-    initiativeId,
-    (initiativeId) => getInitiativeShort(initiativeId, router),
-    {}
+  const { data: initiative, error } = useSWR(initiativeId, (initiativeId) =>
+    getInitiativeShort(initiativeId)
   );
 
   if (!initiative) return <Spinner />;

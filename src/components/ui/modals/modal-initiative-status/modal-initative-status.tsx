@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router';
 import { getInitiativeStatus } from '../../../../lib/requests/initiatives';
 import Modal from '../../modal/modal';
 import styles from './modal-initative-status.module.scss';
-import useSWR, { mutate } from 'swr';
+import useSWR from 'swr';
 import Spinner from '../../spinner/spinner';
 import TextField from '../../text-field/text-field';
 import AnswerField from '../../account/answer-field/answer-field';
@@ -14,12 +13,8 @@ interface ModalInitaitiveStatusProps {
 export default function ModalInitiativeStatus({
   initiativeId,
 }: ModalInitaitiveStatusProps) {
-  const router = useRouter();
-
-  console.log(initiativeId);
-
   const { data: initiative, error } = useSWR('zzzz', () =>
-    getInitiativeStatus(initiativeId, router)
+    getInitiativeStatus(initiativeId)
   );
 
   if (!initiative)

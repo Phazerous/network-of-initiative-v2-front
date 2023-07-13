@@ -1,9 +1,8 @@
-import { NextRouter } from 'next/router';
 import { get, patch } from './base';
 import ModeratorInitiative from '../../dto/moderator-initiative.dto';
 
-export async function getInitiativeToModerate(router: NextRouter) {
-  const initiatives = await get('/initiatives/mod', router);
+export async function getInitiativeToModerate() {
+  const initiatives = await get('/initiatives/mod');
 
   return initiatives as ModeratorInitiative[];
 }

@@ -2,7 +2,6 @@ import CreateUserDto from '../../dto/create-user.dto';
 import LoginDto from '../../dto/login-dto';
 import VerifyEmailDto from '../../dto/verify-email.dto';
 import { extractText, get, post } from './base';
-import { NextRouter } from 'next/router';
 
 export const requestVerificationCode = async (email: string) => {
   const data = {
@@ -36,6 +35,10 @@ export async function loginUser(loginDto: LoginDto) {
   }
 }
 
-export async function logout(router: NextRouter) {
-  return await get('/auth/logout', router);
+export async function logout() {
+  try {
+    await get('/auth/logout');
+  } catch {
+    console.log();
+  }
 }

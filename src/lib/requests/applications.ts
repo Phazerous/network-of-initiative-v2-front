@@ -1,5 +1,4 @@
 import { get, patch, post } from './base';
-import { NextRouter, useRouter } from 'next/router';
 
 export interface ApplicationDto {
   about: string;
@@ -26,11 +25,8 @@ interface ApplicationForUser {
   };
 }
 
-export async function getMyApplication(
-  applicationId: string,
-  router: NextRouter
-) {
-  const response = await get(`/applications/${applicationId}/applier`, router);
+export async function getMyApplication(applicationId: string) {
+  const response = await get(`/applications/${applicationId}/applier`);
 
   return response as ApplicationForUser;
 }

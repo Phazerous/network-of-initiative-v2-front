@@ -1,14 +1,15 @@
-import { NextRouter } from 'next/router';
-
 const endpoint = 'http://localhost:3000/api';
 
-export const get = async (path: string, router: NextRouter) => {
+export const get = async (path: string) => {
   const response: Response = await fetch(endpoint + path, {
     method: 'GET',
     credentials: 'include',
   });
 
-  if (response.status === 401) router.push('/login');
+  if (response.status === 401 || response.status == 403) {
+    window.location.href = '/auth/login';
+    return;
+  }
 
   return handleResponse(response);
 };
@@ -23,6 +24,11 @@ export const post = async (path: string, data: object) => {
     credentials: 'include',
   });
 
+  if (response.status === 401 || response.status == 403) {
+    window.location.href = '/auth/login';
+    return;
+  }
+
   return handleResponse(response);
 };
 
@@ -35,6 +41,11 @@ export const patch = async (path: string, data: object) => {
     body: JSON.stringify(data),
     credentials: 'include',
   });
+
+  if (response.status === 401 || response.status == 403) {
+    window.location.href = '/auth/login';
+    return;
+  }
 
   return handleResponse(response);
 };

@@ -3,10 +3,8 @@ import Fieldset from '../../editable-text-field/editable-text-field';
 import styles from './personal-info.module.scss';
 import Button from '../../button/button';
 import useSWR from 'swr';
-import { get, patch } from '../../../../lib/requests/base';
 import { useRouter } from 'next/router';
 import { getUserProfile, updateUser } from '../../../../lib/requests/account';
-import TextField from '../../text-field/text-field';
 
 interface PersonalInfoProps {
   userId: string;
@@ -15,9 +13,7 @@ interface PersonalInfoProps {
 export default function PersonalInfo({ userId }: PersonalInfoProps) {
   const router = useRouter();
 
-  const { data, error } = useSWR(userId, (userId) =>
-    getUserProfile(userId, router)
-  );
+  const { data, error } = useSWR(userId, (userId) => getUserProfile(userId));
 
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');

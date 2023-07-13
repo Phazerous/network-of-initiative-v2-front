@@ -26,12 +26,15 @@ export default function NavbarLayout({ children }: NavbarLayoutProps) {
           value='Профиль'
           onClick={() => {
             setActionMenu(undefined);
-            redirectToAccount(router);
+            redirectToAccount();
           }}
         />
         <TableOption
           value='Выйти'
-          onClick={() => logout(router)}
+          onClick={() => {
+            logout();
+            router.push('/auth/login');
+          }}
         />
       </TableOptions>
     );

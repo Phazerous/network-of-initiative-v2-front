@@ -1,10 +1,9 @@
 import InitiativeStatusDto from '../../dto/initiative-status.dto';
 import InitiativeDto from '../../dto/initiative.dto';
 import { extractText, get, post } from './base';
-import { NextRouter } from 'next/router';
 
-export async function getInitiative(initiativeId: string, router: NextRouter) {
-  const initiative = await get(`/initiatives/${initiativeId}/full`, router);
+export async function getInitiative(initiativeId: string) {
+  const initiative = await get(`/initiatives/${initiativeId}/full`);
 
   return initiative as Pick<
     InitiativeDto,
@@ -18,17 +17,14 @@ export async function getInitiative(initiativeId: string, router: NextRouter) {
   >;
 }
 
-export async function getInitiatives(router: NextRouter) {
-  const initiatives = await get(`/initiatives`, router);
+export async function getInitiatives() {
+  const initiatives = await get(`/initiatives`);
 
   return initiatives as Pick<InitiativeDto, 'id' | 'title' | 'location'>[];
 }
 
-export async function getInitiativeShort(
-  initaitiveId: string,
-  router: NextRouter
-) {
-  const initiative = await get(`/initiatives/${initaitiveId}/short`, router);
+export async function getInitiativeShort(initaitiveId: string) {
+  const initiative = await get(`/initiatives/${initaitiveId}/short`);
 
   // TODO ADD DATE
   return initiative as Pick<
@@ -36,8 +32,6 @@ export async function getInitiativeShort(
     'title' | 'description' | 'location' | 'university' | 'stage'
   >;
 }
-
-///
 
 export async function createInitiative(
   initiativeDto: Omit<InitiativeDto, 'id' | 'canEdit' | 'status'>
@@ -52,14 +46,11 @@ export async function createInitiative(
   }
 }
 
-export async function getInitiativeStatus(
-  initiativeId: string,
-  router: NextRouter
-) {
-  const initiative = await get(`/initiatives/${initiativeId}/status`, router);
+export async function getInitiativeStatus(initiativeId: string) {
+  const initiative = await get(`/initiatives/${initiativeId}/status`);
 
   if (Object.keys(initiative).length === 0)
-    return await get(`/initiatives/${initiativeId}/status`, router);
+    return await get(`/initiatives/${initiativeId}/status`);
 
   return initiative as InitiativeStatusDto;
 }
