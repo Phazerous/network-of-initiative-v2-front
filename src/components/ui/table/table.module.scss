@@ -18,11 +18,11 @@
       border: 1px solid var(--accent-20);
     }
 
-    &:first-child > div {
+    &:first-child:not(:last-child) > div {
       border-right: none;
     }
 
-    &:last-child > div {
+    &:last-child:not(:first-child) > div {
       border-left: none;
     }
 

@@ -4,8 +4,10 @@ import { AccountTabOption } from '../../components/ui/account/account-tab.enum';
 import styles from '../../styles/pages/[userId].module.scss';
 import PersonalInfo from '../../components/ui/account/personal-info/personal-info';
 import MyApplications from '../../components/ui/account/my-applications/my-applications';
-import { redirectToAccount } from '../../lib/requests/account';
 import MyInitiatives from '../../components/ui/account/my-initiatives/my-initiatives';
+import Spinner from '../../components/ui/spinner/spinner';
+import useSWR from 'swr';
+import { getUserId } from '../../lib/requests/account';
 
 const availableTabs = [
   AccountTabOption.PERSONAL_INFO,
@@ -17,20 +19,20 @@ const availableTabs = [
 export default function Account() {
   const router = useRouter();
   const { userId, tab } = router.query;
+  const { data: actualUserId, error } = useSWR('zab', () => getUserId(router));
 
-  if (userId === 'account') {
-    redirectToAccount(router);
-  } // DELETE
-
-  if (!router.isReady) {
-    return <h1>Loading...</h1>;
-  } // FIX
+  if (!router.isReady) return <Spinner />;
 
   if (
     typeof tab !== 'string' ||
     !availableTabs.includes(tab as AccountTabOption)
   ) {
     router.push(`/${userId}?tab=${availableTabs[0]}`);
+    return;
+  }
+
+  if (userId !== actualUserId) {
+    router.push('/auth/login');
     return;
   }
 

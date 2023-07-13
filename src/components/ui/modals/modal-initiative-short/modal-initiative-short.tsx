@@ -6,6 +6,7 @@ import SideModal from '../../side-modal/side-modal';
 import TextField from '../../text-field/text-field';
 import Button from '../../button/button';
 import { useModalContext } from '../../../../hooks/modal-context';
+import Spinner from '../../spinner/spinner';
 
 interface ModalInitiativeShortProps {
   initiativeId: string;
@@ -16,11 +17,13 @@ export default function ModalInitiativeShort({
 }: ModalInitiativeShortProps) {
   const { setModal } = useModalContext();
   const router = useRouter();
-  const { data: initiative, error } = useSWR('zfdf', () =>
-    getInitiativeShort(initiativeId, router)
+  const { data: initiative, error } = useSWR(
+    initiativeId,
+    (initiativeId) => getInitiativeShort(initiativeId, router),
+    {}
   );
 
-  if (!initiative) return <h1>Loading...</h1>;
+  if (!initiative) return <Spinner />;
 
   return (
     <>

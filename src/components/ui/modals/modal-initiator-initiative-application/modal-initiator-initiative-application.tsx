@@ -11,6 +11,12 @@ import ActionButton, {
 import Modal from '../../modal/modal';
 import TextField from '../../text-field/text-field';
 import UserCard from '../../user-card/user-card';
+import {
+  approveApplication,
+  rejectApplication,
+} from '../../../../lib/requests/applications';
+import Spinner from '../../spinner/spinner';
+import AnswerField from '../../account/answer-field/answer-field';
 
 interface InitiatorInitiativeApplicationModalProps {
   applicationId: string;
@@ -24,15 +30,28 @@ export default function ModalInitiatorInitiativeApplication({
   const [showCandidate, setShowCandidate] = useState(false);
   const [answer, setAnswer] = useState('');
 
-  const { data, error } = useSWR(applicationId, (applicationId) =>
+  const { data: application, error } = useSWR(applicationId, (applicationId) =>
     getInitiativeApplicationForInitiator(applicationId, router)
   );
 
-  if (!data) return <h1>Loading...</h1>;
+  if (!application) return <Spinner />;
 
-  const handleReject = async () => {};
-  const handleApprove = async () => {};
-  const handleDetails = async () => {};
+  const handleReject = async () => {
+    try {
+      await rejectApplication(applicationId, answer);
+      router.reload();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const handleApprove = async () => {
+    try {
+      await approveApplication(applicationId, answer);
+      router.reload();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -40,7 +59,7 @@ export default function ModalInitiatorInitiativeApplication({
         <div className={styles.content}>
           <TextField
             label='РАССКАЖИТЕ О СЕБЕ'
-            value={data.about}
+            content={application.about}
           />
 
           <div>
@@ -49,35 +68,35 @@ export default function ModalInitiatorInitiativeApplication({
               value='ДАННЫЕ О КАНДИДАТЕ'
               onClick={() => setShowCandidate(!showCandidate)}
             />
-            {showCandidate && <UserCard {...data.applier} />}
+            {showCandidate && <UserCard {...application.applier} />}
           </div>
 
-          <Fieldset
-            type='textarea'
-            label='ОТВЕТ КАНДИДАТУ'
-            content={answer}
-            setValue={setAnswer}
-          />
-
-          <div className={styles.buttons}>
-            <div className={styles.buttonRow}>
-              <ActionButton
-                actionType={ActionButtonType.REJECT}
-                onClick={handleReject}
-              />
-              <ActionButton
-                actionType={ActionButtonType.APPROVE}
-                onClick={handleApprove}
-              />
+          {application.status === 0 ? (
+            <>
+              <Fieldset
+                type='textarea'
+                label='ОТВЕТ КАНДИДАТУ'
+                content={answer}
+                setValue={setAnswer}
+              />{' '}
+              <div className={styles.buttons}>
+                <div className={styles.buttonRow}>
+                  <ActionButton
+                    actionType={ActionButtonType.REJECT}
+                    onClick={handleReject}
+                  />
+                  <ActionButton
+                    actionType={ActionButtonType.APPROVE}
+                    onClick={handleApprove}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className={styles.answer}>
+              <AnswerField type={application.status} />
             </div>
-
-            <div className={styles.buttonRow}>
-              <ActionButton
-                actionType={ActionButtonType.DETAILS}
-                onClick={handleDetails}
-              />
-            </div>
-          </div>
+          )}
         </div>
       </Modal>
     </>

@@ -6,10 +6,16 @@ interface TableOption {
 }
 
 export default function TableOption({ value, onClick }: TableOption) {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+
+    onClick();
+  };
+
   return (
     <>
       <div
-        onClick={onClick}
+        onClick={handleClick}
         className={styles.option}>
         {value}
       </div>

@@ -34,15 +34,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   });
 
-  if (modal && actionMenu) return;
-
   return (
     <ModalContext.Provider value={{ setModal, modal }}>
-      {modal}
       <ActionMenuContext.Provider value={{ setActionMenu, actionMenu }}>
-        <div ref={wrapperRef}>{actionMenu}</div>
         <NavbarLayout>
-          <Component {...pageProps} />;
+          <Component {...pageProps} />
+          <div ref={wrapperRef}>{actionMenu}</div>
+          {modal}
         </NavbarLayout>
       </ActionMenuContext.Provider>
     </ModalContext.Provider>

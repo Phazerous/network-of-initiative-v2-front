@@ -5,10 +5,10 @@ import { useState } from 'react';
 import styles from '../../../styles/pages/[initiativeId].module.scss';
 import InitiativeEditable from '../../../components/ui/initiative/initiative-editable/initiative-editable';
 import InitiativeView from '../../../components/ui/initiative/initiative-view/initiative-view';
+import Spinner from '../../../components/ui/spinner/spinner';
 
 export default function InitiativePage() {
   const router = useRouter();
-  const [editing, setEditing] = useState(false);
 
   const { initiativeId } = router.query as { initiativeId: string };
 
@@ -17,24 +17,13 @@ export default function InitiativePage() {
   );
 
   if (!router.isReady) return;
-  if (!initiative) return <h1>Loading...</h1>; // TODO
+  if (!initiative) return <Spinner />;
 
   return (
     <>
       <div className={styles.container}>
         <main>
-          {editing ? (
-            <InitiativeEditable
-              initiative={initiative}
-              mode='edit'
-              handleReturn={() => setEditing(false)}
-            />
-          ) : (
-            <InitiativeView
-              initiative={initiative}
-              onEdit={() => setEditing(true)}
-            />
-          )}
+          <InitiativeView initiative={initiative} />
         </main>
       </div>
     </>

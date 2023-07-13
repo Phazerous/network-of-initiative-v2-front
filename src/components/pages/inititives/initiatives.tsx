@@ -22,13 +22,11 @@ export default function InitiativesPage() {
 
   const handleClick = (initiativeId: string) => {
     setModal(undefined);
-    setTimeout(
-      () => setModal(<ModalInitiativeShort initiativeId={initiativeId} />),
-      500
-    );
-  };
 
-  console.log(initiatives);
+    setTimeout(() => {
+      setModal(<ModalInitiativeShort initiativeId={initiativeId} />);
+    }, 100);
+  };
 
   return (
     <>

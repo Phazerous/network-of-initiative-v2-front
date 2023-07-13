@@ -2,7 +2,7 @@ import { SvgDetails, SvgTick, SvgXMark } from '../../../../../public/svgs';
 import styles from './answer-field.module.scss';
 
 interface AnswerFieldProps {
-  type: 'rejected' | 'details' | 'approved';
+  type: 'rejected' | 'details' | 'approved' | number;
 }
 
 export default function AnswerField({ type }: AnswerFieldProps) {
@@ -18,33 +18,33 @@ export default function AnswerField({ type }: AnswerFieldProps) {
   );
 }
 
-function getStyle(type: string) {
+function getStyle(type: string | number) {
   switch (type) {
     case 'rejected':
+    case 2:
       return {
         style: styles.rejected,
         value: 'Отклонена',
         svg: <SvgXMark />,
       };
 
-    case 'details':
-      return {
-        style: styles.details,
-        value: 'Добавить детали',
-        svg: <SvgDetails />,
-      };
-
     case 'approved':
+    case 1:
       return {
         style: styles.approved,
         value: 'Одобрена',
         svg: <SvgTick />,
       };
+
+    case 0:
+      return {
+        value: 'На рассмотрении',
+      };
+
     default:
       return {
         style: '',
-        value: 'Error',
-        svg: <SvgXMark />,
+        value: 'Необходимо открыть снова',
       };
   }
 }

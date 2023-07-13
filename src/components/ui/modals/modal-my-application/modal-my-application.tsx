@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import styles from './modal-my-application.module.scss';
 import TextField from '../../text-field/text-field';
 import AnswerField from '../../account/answer-field/answer-field';
+import Spinner from '../../spinner/spinner';
 
 interface ModalMyApplication {
   applicationId: string;
@@ -18,7 +19,7 @@ export default function ModalMyApplication({
     getMyApplication(applicationId, router)
   );
 
-  if (!application) return <h1>Loading...</h1>;
+  if (!application) return <Spinner />;
 
   const {
     about,
@@ -34,17 +35,17 @@ export default function ModalMyApplication({
           <h1>{title}</h1>
           <TextField
             label='РАССКАЖИТЕ О СЕБЕ'
-            value={about}
+            content={about}
           />
           {answer && (
             <TextField
               label='ОТВЕТ ИНИЦИАТОРА'
-              value={answer}
+              content={answer}
             />
           )}
 
           <div className={styles.statusField}>
-            <AnswerField type={'rejected'} />
+            <AnswerField type={status} />
           </div>
         </div>
       </Modal>

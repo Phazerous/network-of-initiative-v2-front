@@ -2,6 +2,7 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { getInitiativeApplications } from '../../../../../lib/requests/account';
 import TableInitiativeApplications from '../../../table-initiative-applications/table-initiative-applications';
+import Spinner from '../../../spinner/spinner';
 
 interface MyInitiativeApplicationsProps {
   initiativeId: string;
@@ -15,9 +16,9 @@ export default function MyInitiativeApplications({
     getInitiativeApplications(initiativeId, router)
   );
 
-  if (!applications) return <h1>Loading...</h1>;
+  if (!applications) return <Spinner />;
 
-  if (applications.length === 0) return;
+  if (!Array.isArray(applications) || applications.length !== 0) return;
 
   return (
     <>

@@ -8,6 +8,7 @@ import Button from '../../button/button';
 import { SvgPlane } from '../../../../../public/svgs';
 import styles from './modal-initiative-apply.module.scss';
 import Checkbox from '../../checkbox/checkbox';
+import { useModalContext } from '../../../../hooks/modal-context';
 
 interface ModalInitiativeApplyProps {
   initiativeId: string;
@@ -18,6 +19,7 @@ export default function ModalInitiativeApply({
   initiativeId,
   title,
 }: ModalInitiativeApplyProps) {
+  const { setModal } = useModalContext();
   const router = useRouter();
 
   const [about, setAbout] = useState('');
@@ -28,6 +30,7 @@ export default function ModalInitiativeApply({
 
     try {
       await postApplication(initiativeId, { about });
+      setModal(undefined);
       redirectToAccount(router);
     } catch (e) {
       console.log(e);

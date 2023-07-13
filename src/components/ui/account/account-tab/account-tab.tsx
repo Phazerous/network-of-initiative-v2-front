@@ -43,8 +43,6 @@ function getTabIcon(tab: AccountTabOption) {
       return <SvgMyApplications />;
     case AccountTabOption.MY_INITIATIVES:
       return <SvgMyInitiatives />;
-    case AccountTabOption.MODERATOR_PANEL:
-      return <SvgModeratorPanel />;
   }
 }
 
@@ -56,7 +54,5 @@ function getTabName(tab: AccountTabOption) {
       return 'Мои заявки';
     case AccountTabOption.MY_INITIATIVES:
       return 'Мои инициативы';
-    case AccountTabOption.MODERATOR_PANEL:
-      return 'Модераторская панель';
   }
 }

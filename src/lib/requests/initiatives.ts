@@ -1,3 +1,4 @@
+import InitiativeStatusDto from '../../dto/initiative-status.dto';
 import InitiativeDto from '../../dto/initiative.dto';
 import { extractText, get, post } from './base';
 import { NextRouter } from 'next/router';
@@ -5,7 +6,16 @@ import { NextRouter } from 'next/router';
 export async function getInitiative(initiativeId: string, router: NextRouter) {
   const initiative = await get(`/initiatives/${initiativeId}/full`, router);
 
-  return initiative;
+  return initiative as Pick<
+    InitiativeDto,
+    | 'id'
+    | 'title'
+    | 'stage'
+    | 'location'
+    | 'description'
+    | 'searching'
+    | 'university'
+  >;
 }
 
 export async function getInitiatives(router: NextRouter) {
@@ -40,4 +50,16 @@ export async function createInitiative(
   } catch (e) {
     throw e;
   }
+}
+
+export async function getInitiativeStatus(
+  initiativeId: string,
+  router: NextRouter
+) {
+  const initiative = await get(`/initiatives/${initiativeId}/status`, router);
+
+  if (Object.keys(initiative).length === 0)
+    return await get(`/initiatives/${initiativeId}/status`, router);
+
+  return initiative as InitiativeStatusDto;
 }

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import { getUserInitiatives } from '../../../../lib/requests/account';
+import { getUserInitiativesShort } from '../../../../lib/requests/account';
 import { useState } from 'react';
 import TableMyInitiatives from '../../table-my-initiatives/table-my-initiatives';
 import MyInitiativeApplications from './my-initiative-applications/my-initiative-applications';
@@ -16,8 +16,8 @@ export default function MyInitiatives({ userId }: MyInitiativesProps) {
   const router = useRouter();
   const [selectedInitiativeId, setSelectedInitiativeId] = useState('');
 
-  const { data: initiatives, error } = useSWR(userId, (userId) =>
-    getUserInitiatives(userId, router)
+  const { data: initiatives, error } = useSWR('zzz', () =>
+    getUserInitiativesShort(userId, router)
   );
 
   if (!initiatives) return <Spinner />;

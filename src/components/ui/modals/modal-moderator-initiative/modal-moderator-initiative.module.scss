@@ -1,12 +1,7 @@
-.contactFirstRow {
-  display: flex;
-  justify-content: space-between;
-}
-
 .content {
   display: flex;
   flex-direction: column;
-  row-gap: 32px;
+  row-gap: 16px;
 }
 
 .buttonRow {
@@ -21,8 +16,4 @@
   display: flex;
   flex-direction: column;
   row-gap: 12px;
-}
-
-.answer {
-  display: inline-flex;
 }

@@ -6,7 +6,16 @@ import InitiativeEditableControls from './initiative-editable-controls/initiativ
 import InitiativeCreationControls from './initiative-creation-controls/initiative-creation-controls';
 
 interface InitiativeEditableProps {
-  initiative?: InitiativeDto;
+  initiative?: Pick<
+    InitiativeDto,
+    | 'id'
+    | 'title'
+    | 'stage'
+    | 'location'
+    | 'description'
+    | 'searching'
+    | 'university'
+  >;
   mode: 'edit' | 'create';
   handleReturn?: () => void;
 }

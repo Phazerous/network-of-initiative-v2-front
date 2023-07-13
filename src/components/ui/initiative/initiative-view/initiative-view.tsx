@@ -4,8 +4,16 @@ import InitiativeViewControls from './initiative-view-controls/initiative-view-c
 import styles from './initiative-view.module.scss';
 
 interface InitiativeViewProps {
-  initiative: InitiativeDto;
-  onEdit: () => void;
+  initiative: Pick<
+    InitiativeDto,
+    | 'id'
+    | 'title'
+    | 'stage'
+    | 'location'
+    | 'description'
+    | 'searching'
+    | 'university'
+  >;
 }
 
 export default function InitiativeView({
@@ -17,48 +25,44 @@ export default function InitiativeView({
     university,
     description,
     searching,
-    canEdit,
   },
-  onEdit,
 }: InitiativeViewProps) {
   return (
     <>
       <TextField
         label='НАЗВАНИЕ ИНИЦИАТИВЫ'
-        value={title}
+        content={title}
       />
 
       <div className={styles.details}>
         <TextField
           label='СТАТУС'
-          value={stage}
+          content={stage}
         />
 
         <TextField
           label='ГОРОД'
-          value={location}
+          content={location}
         />
 
         <TextField
           label='ВУЗ'
-          value={university}
+          content={university}
         />
       </div>
 
       <TextField
         label='ОПИСАНИЕ ПРОЕКТА'
-        value={description}
+        content={description}
       />
 
       <TextField
         label='КОГО МЫ ИЩЕМ'
-        value={searching}
+        content={searching}
       />
 
       <InitiativeViewControls
         title={title}
-        onEdit={onEdit}
-        canEdit={canEdit}
         initiativeId={id}
       />
     </>

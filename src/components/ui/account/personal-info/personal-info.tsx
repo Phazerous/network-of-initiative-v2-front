@@ -6,6 +6,7 @@ import useSWR from 'swr';
 import { get, patch } from '../../../../lib/requests/base';
 import { useRouter } from 'next/router';
 import { getUserProfile, updateUser } from '../../../../lib/requests/account';
+import TextField from '../../text-field/text-field';
 
 interface PersonalInfoProps {
   userId: string;
@@ -22,7 +23,6 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
   const [lastname, setLastname] = useState('');
   const [location, setLocation] = useState('');
   const [university, setUniversity] = useState('');
-  const [email, setEmail] = useState('');
   const [contact, setContact] = useState('');
   const [about, setAbout] = useState('');
 
@@ -32,7 +32,6 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
       setLastname(data.lastname);
       setLocation(data.location);
       setUniversity(data.university);
-      setEmail(data.email);
       setContact(data.contact);
       setAbout(data.about);
     }
@@ -95,13 +94,6 @@ export default function PersonalInfo({ userId }: PersonalInfoProps) {
           </div>
 
           <div className={styles.fieldsetRow}>
-            <Fieldset
-              type='input'
-              label='ПОЧТА'
-              content={email}
-              setValue={setEmail}
-            />
-
             <Fieldset
               type='input'
               label='КОНТАКТНАЯ ИНФОРМАЦИЯ'

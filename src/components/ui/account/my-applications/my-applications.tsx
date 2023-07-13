@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import getUserApplications from '../../../../lib/requests/account';
+import getUserApplicationsShort from '../../../../lib/requests/account';
 import TableMyApplications from '../../table-my-applications/table-my-applications';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -13,8 +13,10 @@ export default function MyApplications({ userId }: MyApplicationsProps) {
   const router = useRouter();
 
   const { data, error } = useSWR('/hey', (url) =>
-    getUserApplications(userId, router)
+    getUserApplicationsShort(userId, router)
   );
+
+  console.log(data);
 
   if (!data) return <Spinner />;
 

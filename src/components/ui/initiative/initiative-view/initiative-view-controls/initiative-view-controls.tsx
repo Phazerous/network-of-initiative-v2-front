@@ -6,16 +6,12 @@ import ModalInitiativeApply from '../../../../ui/modals/modal-initaitive-apply/m
 
 interface InitiativeViewControlsProps {
   title: string;
-  onEdit: () => void;
-  canEdit: boolean;
   initiativeId: string;
 }
 
 export default function InitiativeViewControls({
   title,
   initiativeId,
-  onEdit,
-  canEdit,
 }: InitiativeViewControlsProps) {
   const { setModal } = useModalContext();
 
@@ -45,21 +41,12 @@ export default function InitiativeViewControls({
           />
         </div>
 
-        {!canEdit ? (
-          <Button
-            style='primary'
-            content='Редактировать'
-            onClick={onEdit}
-            svgIcon={<SvgPencil />}
-          />
-        ) : (
-          <Button
-            style='primary'
-            content='Подать заявку'
-            onClick={handleApply}
-            svgIcon={<SvgPlane />}
-          />
-        )}
+        <Button
+          style='primary'
+          content='Подать заявку'
+          onClick={handleApply}
+          svgIcon={<SvgPlane />}
+        />
       </InitiativeControls>
     </>
   );

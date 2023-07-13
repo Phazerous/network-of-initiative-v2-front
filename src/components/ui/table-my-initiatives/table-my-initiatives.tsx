@@ -11,6 +11,8 @@ import TableOptions from '../table/table-options/table-options';
 import TableCell from '../table/table-row/table-cell/table-cell';
 import TableRow from '../table/table-row/table-row';
 import styles from './table-my-initiatives.module.scss';
+import { useModalContext } from '../../../hooks/modal-context';
+import ModalInitiativeStatus from '../modals/modal-initiative-status/modal-initative-status';
 
 interface TableMyInitiativesProps {
   initiatives: InitiativeShortDto[];
@@ -22,6 +24,7 @@ export default function TableMyInitiatives({
   onInitiativeSelect,
 }: TableMyInitiativesProps) {
   const { setActionMenu } = useActionMenu();
+  const { setModal } = useModalContext();
   const router = useRouter();
 
   const showContextMenu = (
@@ -40,6 +43,12 @@ export default function TableMyInitiatives({
             router.push(`/initiatives/${initiativeId}`);
           }}
         />
+        <TableOption
+          value='Подробнее'
+          onClick={() =>
+            setModal(<ModalInitiativeStatus initiativeId={initiativeId} />)
+          }
+        />
       </TableOptions>
     );
   };
@@ -54,24 +63,27 @@ export default function TableMyInitiatives({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {initiatives.map((initiative, idx) => (
-          <TableRow
-            key={idx}
-            onClick={() =>
-              onInitiativeSelect && onInitiativeSelect(initiative.id)
-            }>
-            <TableCell>{initiative.title}</TableCell>
-            <TableCell>
-              <Status statusCode={initiative.status} />
-            </TableCell>
-            <TableCell
-              onClick={(e: React.MouseEvent<HTMLTableCellElement>) =>
-                showContextMenu(e, initiative.id)
+        {initiatives &&
+          Array.isArray(initiatives) &&
+          initiatives.map((initiative, idx) => (
+            <TableRow
+              key={idx}
+              onClick={() =>
+                onInitiativeSelect && onInitiativeSelect(initiative.id)
               }>
-              <TableMore />
-            </TableCell>
-          </TableRow>
-        ))}
+              <TableCell>{initiative.title}</TableCell>
+              <TableCell>
+                <Status statusCode={initiative.status} />
+              </TableCell>
+              <TableCell
+                onClick={(e: React.MouseEvent<HTMLTableCellElement>) => {
+                  e.stopPropagation();
+                  showContextMenu(e, initiative.id);
+                }}>
+                <TableMore />
+              </TableCell>
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   );

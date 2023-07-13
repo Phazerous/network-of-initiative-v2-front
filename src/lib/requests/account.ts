@@ -3,23 +3,7 @@ import ApplicationShortDto from '../../dto/application-for-user.dto';
 import { extractText, get, patch } from './base';
 import InitiativeShortDto from '../../dto/initiative-short.dto';
 import ApplicationForInitiatorShortDto from '../../dto/application-for-initiator-short.dto';
-import LoginDto from '../../dto/login-dto';
 import UpdateUserDto from '../../dto/update-user.dto';
-
-export default async function getUserApplications(
-  userId: string,
-  router: NextRouter
-) {
-  try {
-    console.log('start');
-    const json = await get(`/${userId}/applications`, router);
-    const applications = json as unknown as ApplicationShortDto[];
-    return applications;
-  } catch (e) {
-    console.log(e);
-    // TODO REDIRECT LOGIC
-  }
-}
 
 export interface InitiativeApplicationShort {
   id: string;
@@ -34,32 +18,37 @@ export async function getInitiativeApplications(
   initiativeId: string,
   router: NextRouter
 ) {
-  const initiatives = await get(
+  const applications = await get(
     `/initiatives/${initiativeId}/applications`,
     router
   );
 
-  return initiatives as ApplicationForInitiatorShortDto[];
-}
-
-export async function getUserInitiatives(userId: string, router: NextRouter) {
-  const response = await get(`/${userId}/initiatives`, router);
-
-  return response as InitiativeShortDto[];
+  return applications as ApplicationForInitiatorShortDto[];
 }
 
 export async function redirectToAccount(router: NextRouter) {
   try {
-    const response = await get('/account', router);
+    const response = await get('/users', router);
     const userId = await extractText(response);
     router.push(`/${userId}`);
   } catch (e) {
-    throw e;
+    router.push('/auth/login');
+  }
+}
+
+export async function getUserId(router: NextRouter) {
+  try {
+    const response = await get('/users', router);
+    const userId = await extractText(response);
+    return userId;
+  } catch (e) {
+    router.push('/auth/login');
   }
 }
 
 export interface InitiativeApplicationForInitiator {
   about: string;
+  status: number;
   applier: {
     name: string;
     lastname: string;
@@ -75,14 +64,12 @@ export async function getInitiativeApplicationForInitiator(
   router: NextRouter
 ) {
   const application = await get(
-    `/applications/${applicationId}?type=initiator`,
+    `/applications/${applicationId}/initiator`,
     router
   );
 
   return application as InitiativeApplicationForInitiator;
 }
-
-//
 
 export async function getUserProfile(userId: string, router: NextRouter) {
   return await get(`/users/${userId}`, router);
@@ -90,4 +77,21 @@ export async function getUserProfile(userId: string, router: NextRouter) {
 
 export async function updateUser(userId: string, updateUserDto: UpdateUserDto) {
   return await patch(`/users/${userId}`, updateUserDto);
+}
+
+export async function getUserInitiativesShort(
+  userId: string,
+  router: NextRouter
+) {
+  const response = await get(`/users/${userId}/initiatives`, router);
+
+  return response as InitiativeShortDto[];
+}
+
+export default async function getUserApplicationsShort(
+  userId: string,
+  router: NextRouter
+) {
+  const applications = await get(`/users/${userId}/applications`, router);
+  return applications as ApplicationShortDto[];
 }

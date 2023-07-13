@@ -1,4 +1,4 @@
-import { get, post } from './base';
+import { get, patch, post } from './base';
 import { NextRouter, useRouter } from 'next/router';
 
 export interface ApplicationDto {
@@ -10,7 +10,7 @@ export async function postApplication(
   applicationDto: ApplicationDto
 ) {
   const response = await post(
-    `/initiatives/${initiativeId}/applications`,
+    `/initiatives/${initiativeId}/apply`,
     applicationDto
   );
 
@@ -30,10 +30,28 @@ export async function getMyApplication(
   applicationId: string,
   router: NextRouter
 ) {
-  const response = await get(
-    `/applications/${applicationId}?type=user`,
-    router
-  );
+  const response = await get(`/applications/${applicationId}/applier`, router);
 
   return response as ApplicationForUser;
+}
+
+export async function approveApplication(
+  applicationId: string,
+  answer: string
+) {
+  const response = await patch(`/applications/${applicationId}`, {
+    status: 1,
+    answer,
+  });
+
+  return response;
+}
+
+export async function rejectApplication(applicationId: string, answer: string) {
+  const response = await patch(`/applications/${applicationId}`, {
+    status: 2,
+    answer,
+  });
+
+  return response;
 }

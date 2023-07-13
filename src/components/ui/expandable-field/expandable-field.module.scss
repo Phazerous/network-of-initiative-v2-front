@@ -3,15 +3,20 @@
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
+
+  user-select: none;
 }
 
 .field {
   display: inline-flex;
   align-items: center;
   column-gap: 8px;
+
+  cursor: pointer;
 }
 
 .svg {
   display: inline-flex;
   color: var(--accent-l);
+  user-select: none;
 }
