@@ -12,9 +12,7 @@ import ModalInitiativeShort from '../../ui/modals/modal-initiative-short/modal-i
 
 export default function InitiativesPage() {
   const router = useRouter();
-  const { data: initiatives, error } = useSWR('z', () =>
-    getInitiatives(router)
-  );
+  const { data: initiatives, error } = useSWR('z', () => getInitiatives());
 
   const { setModal } = useModalContext();
 

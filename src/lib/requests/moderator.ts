@@ -1,4 +1,5 @@
 import { get, patch } from './base';
+
 import ModeratorInitiative from '../../dto/moderator-initiative.dto';
 
 export async function getInitiativeToModerate() {

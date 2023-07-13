@@ -1,7 +1,6 @@
 import useSWR from 'swr';
 import getUserApplicationsShort from '../../../../lib/requests/account';
 import TableMyApplications from '../../table-my-applications/table-my-applications';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Spinner from '../../spinner/spinner';
 
@@ -10,10 +9,8 @@ interface MyApplicationsProps {
 }
 
 export default function MyApplications({ userId }: MyApplicationsProps) {
-  const router = useRouter();
-
   const { data, error } = useSWR('/hey', (url) =>
-    getUserApplicationsShort(userId, router)
+    getUserApplicationsShort(userId)
   );
 
   console.log(data);

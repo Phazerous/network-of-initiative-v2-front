@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { getUserInitiativesShort } from '../../../../lib/requests/account';
 import { useState } from 'react';
@@ -13,11 +12,10 @@ interface MyInitiativesProps {
 }
 
 export default function MyInitiatives({ userId }: MyInitiativesProps) {
-  const router = useRouter();
   const [selectedInitiativeId, setSelectedInitiativeId] = useState('');
 
   const { data: initiatives, error } = useSWR('zzz', () =>
-    getUserInitiativesShort(userId, router)
+    getUserInitiativesShort(userId)
   );
 
   if (!initiatives) return <Spinner />;

@@ -1,6 +1,5 @@
 import useSWR from 'swr';
 import { getInitiativeToModerate } from '../../../lib/requests/moderator';
-import { useRouter } from 'next/router';
 import Spinner from '../spinner/spinner';
 import TableHeader from '../table/table-header/table-header';
 import TableRow from '../table/table-row/table-row';
@@ -12,9 +11,8 @@ import ModalModeratorInitiative from '../modals/modal-moderator-initiative/modal
 import styles from './table-moderator-initiatives.module.scss';
 
 export default function TableModeratorInitiatives() {
-  const router = useRouter();
   const { data: initiatives, error } = useSWR('rand', () =>
-    getInitiativeToModerate(router)
+    getInitiativeToModerate()
   );
   const { setModal } = useModalContext();
 

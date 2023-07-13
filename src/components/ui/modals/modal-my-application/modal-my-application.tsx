@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { getMyApplication } from '../../../../lib/requests/applications';
 import Modal from '../../modal/modal';
 import useSWR from 'swr';
@@ -14,9 +13,8 @@ interface ModalMyApplication {
 export default function ModalMyApplication({
   applicationId,
 }: ModalMyApplication) {
-  const router = useRouter();
   const { data: application, error } = useSWR(applicationId, (applicationId) =>
-    getMyApplication(applicationId, router)
+    getMyApplication(applicationId)
   );
 
   if (!application) return <Spinner />;

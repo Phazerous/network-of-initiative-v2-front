@@ -31,7 +31,7 @@ export default function ModalInitiatorInitiativeApplication({
   const [answer, setAnswer] = useState('');
 
   const { data: application, error } = useSWR(applicationId, (applicationId) =>
-    getInitiativeApplicationForInitiator(applicationId, router)
+    getInitiativeApplicationForInitiator(applicationId)
   );
 
   if (!application) return <Spinner />;
